@@ -1,19 +1,47 @@
-import { ExternalLink } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Search, FileText, Volume2 } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
+import { client } from '../lib/sanityClient';
 
-const LANGUAGES = [
-  'English', 'Burmese', 'Kanan', 'Southern-Rakhine', 'Danu', 'Shan',
-  'Taungyo', 'Marmagyi', 'Chin-Ekai', 'TaiLaing', 'Thet', 'Chin-Cumtu (Sumtu)',
-  'Intha', 'Pwo Karen (Eastern)', 'Lahta', 'Northern-Rakhine', 'Chin-Songlai',
-  'Dawei', 'Kadu', 'Khun', 'Samtao', 'Dannau', "Karen (S'gaw)", 'Lisu',
-];
+interface SanityLanguage {
+  _id: string;
+  name: string;
+  region?: string;
+  slug: { current: string };
+  pdfFile?: { asset: { url: string } };
+  audioFile?: { asset: { url: string } };
+}
 
-const BASE_URL = 'https://empowerasia.org/10-stories-of-jesus';
+const LANGUAGES_QUERY = `*[_type == "language"] | order(name asc) {
+  _id, name, region, slug,
+  pdfFile { asset-> { url } },
+  audioFile { asset-> { url } }
+}`;
 
 export default function TenStoriesPage() {
+  const navigate = useNavigate();
+  const [languages, setLanguages] = useState<SanityLanguage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    client.fetch<SanityLanguage[]>(LANGUAGES_QUERY)
+      .then((data) => { if (data) setLanguages(data); })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  const filtered = useMemo(() =>
+    languages.filter((l) =>
+      !search ||
+      l.name.toLowerCase().includes(search.toLowerCase()) ||
+      (l.region || '').toLowerCase().includes(search.toLowerCase())
+    ), [languages, search]);
+
   return (
     <div>
-      {/* Hero */}
+      {/* Hero — untouched */}
       <section className="pt-32 sm:pt-40 pb-12 sm:pb-20 bg-gray-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">Featured Resource</p>
@@ -24,7 +52,7 @@ export default function TenStoriesPage() {
         </div>
       </section>
 
-      {/* Hero image */}
+      {/* Hero image — untouched */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <img
           src="/Image.webp"
@@ -34,7 +62,7 @@ export default function TenStoriesPage() {
         />
       </div>
 
-      {/* About */}
+      {/* About — untouched */}
       <section className="py-10 sm:py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="space-y-5 sm:space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
@@ -54,49 +82,68 @@ export default function TenStoriesPage() {
         </div>
       </section>
 
-      {/* Language list */}
+      {/* Language grid — new Sanity-powered section */}
       <section className="py-12 sm:py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between mb-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <h2 className="text-2xl font-bold text-gray-900">Available Languages</h2>
-            <a
-              href={BASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-black transition-colors"
-            >
-              View All <ExternalLink size={13} />
-            </a>
+            {/* Search */}
+            <div className="relative w-full sm:w-72">
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search languages..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-200 text-gray-800 placeholder-gray-400"
+              />
+            </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {LANGUAGES.map((lang) => (
-              <a
-                key={lang}
-                href={BASE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-xl hover:bg-blue-50 hover:border-blue-200 transition-all group"
-              >
-                <span className="font-medium text-gray-800 group-hover:text-blue-900">{lang}</span>
-                <ExternalLink size={14} className="text-gray-400 group-hover:text-blue-600 shrink-0" />
-              </a>
-            ))}
-          </div>
+          {loading && (
+            <p className="text-gray-400 text-sm text-center py-12">Loading languages...</p>
+          )}
 
-          <div className="mt-12 bg-blue-900 rounded-2xl p-8 text-center">
-            <p className="text-blue-100 mb-5 leading-relaxed">
-              All language versions are freely available to read, listen to, and share on the Empower Asia website.
+          {!loading && filtered.length === 0 && (
+            <p className="text-gray-400 text-sm text-center py-12">
+              {languages.length === 0
+                ? 'No languages added yet. Add them in Sanity Studio.'
+                : 'No languages match your search.'}
             </p>
-            <a
-              href={BASE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-blue-900 font-bold rounded-full hover:bg-blue-50 transition-colors"
-            >
-              Open 10 Stories of Jesus <ExternalLink size={15} />
-            </a>
-          </div>
+          )}
+
+          {filtered.length > 0 && (
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {filtered.map((lang) => (
+                <button
+                  key={lang._id}
+                  onClick={() => navigate(`/ten-stories/${lang.slug.current}`)}
+                  className="flex flex-col gap-2 px-5 py-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition-all text-left group"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="font-semibold text-gray-900 group-hover:text-blue-900 transition-colors leading-snug">
+                      {lang.name}
+                    </span>
+                    <div className="flex gap-1 shrink-0 mt-0.5">
+                      {lang.pdfFile && (
+                        <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full">
+                          <FileText size={10} /> PDF
+                        </span>
+                      )}
+                      {lang.audioFile && (
+                        <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full">
+                          <Volume2 size={10} /> Audio
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {lang.region && (
+                    <span className="text-gray-400 text-xs">{lang.region}</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

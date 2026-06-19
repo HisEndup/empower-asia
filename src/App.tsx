@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight, MapPin, Phone, Mail, Facebook } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import StoryPage from './pages/StoryPage';
@@ -10,7 +11,11 @@ import MovementVideoPage from './pages/MovementVideoPage';
 import TeamPage from './pages/TeamPage';
 import GivePage from './pages/GivePage';
 import BlogPage from './pages/BlogPage';
-import BlogPostB3Page from './pages/BlogPostB3Page';
+import BlogPostPage from './pages/BlogPostPage';
+import LanguageStoryPage from './pages/LanguageStoryPage';
+import B3PrayerPage from './pages/B3PrayerPage';
+import B3StoriesPage from './pages/B3StoriesPage';
+import BridgePage from './pages/BridgePage';
 import ContactPage from './pages/ContactPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
@@ -28,12 +33,31 @@ export type Page =
   | 'movement-video'
   | 'give'
   | 'blog'
-  | 'blog-b3'
   | 'contact'
   | 'terms'
   | 'privacy'
   | 'cookie'
-  | 'training-videos';
+  | 'training-videos'
+  | 'b3-stories';
+
+export const PAGE_PATHS: Record<Page, string> = {
+  home: '/',
+  team: '/team',
+  story: '/story',
+  process: '/process',
+  beliefs: '/beliefs',
+  translations: '/translations',
+  'ten-stories': '/ten-stories',
+  'movement-video': '/movement-video',
+  give: '/give',
+  blog: '/blog',
+  contact: '/contact',
+  terms: '/terms',
+  privacy: '/privacy',
+  cookie: '/cookie',
+  'training-videos': '/training-videos',
+  'b3-stories': '/b3-stories',
+};
 
 type NavItem =
   | { label: string; page: Page }
@@ -49,18 +73,13 @@ const NAV_LINKS: NavItem[] = [
       { label: 'Our Beliefs', page: 'beliefs' },
     ],
   },
-  {
-    label: 'Bible Translations',
-    children: [
-      { label: 'Bible Translations', page: 'translations' },
-      { label: '10 Stories of Jesus', page: 'ten-stories' },
-    ],
-  },
+  { label: 'Bible Translations', page: 'translations' },
   { label: 'Blog', page: 'blog' },
   { label: 'Contact', page: 'contact' },
   {
     label: 'Resources',
     children: [
+      { label: 'B3 Stories', page: 'b3-stories' },
       { label: 'Movement Video', page: 'movement-video' },
       { label: 'Training Videos & Sermons', page: 'training-videos' },
     ],
@@ -68,21 +87,21 @@ const NAV_LINKS: NavItem[] = [
 ];
 
 function Navigation({
-  onNavigate,
-  currentPage,
   scrolled,
   menuOpen,
   setMenuOpen,
 }: {
-  onNavigate: (p: Page) => void;
-  currentPage: Page;
   scrolled: boolean;
   menuOpen: boolean;
   setMenuOpen: (v: boolean) => void;
 }) {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -93,6 +112,14 @@ function Navigation({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+
+  const go = (page: Page) => {
+    navigate(PAGE_PATHS[page]);
+    setOpenDropdown(null);
+    setMenuOpen(false);
+    setOpenMobileSection(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const toggleDropdown = (label: string) => {
     setOpenDropdown((prev) => (prev === label ? null : label));
@@ -106,14 +133,14 @@ function Navigation({
     <nav
       ref={navRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        currentPage !== 'home' || scrolled || menuOpen
+        !isHome || scrolled || menuOpen
           ? 'bg-gray-950/95 backdrop-blur-md'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <button onClick={() => { onNavigate('home'); setMenuOpen(false); }} className="flex items-center gap-3">
+        <button onClick={() => go('home')} className="flex items-center gap-3">
           <img
             src="/qt=q_95.webp"
             alt="Empower Asia"
@@ -131,7 +158,7 @@ function Navigation({
             <div key={link.label} className="relative">
               {'page' in link ? (
                 <button
-                  onClick={() => { onNavigate(link.page); setOpenDropdown(null); }}
+                  onClick={() => go(link.page)}
                   className="text-sm font-semibold text-white hover:text-gray-300 transition-colors py-2"
                 >
                   {link.label}
@@ -150,7 +177,7 @@ function Navigation({
                       {link.children.map((child) => (
                         <button
                           key={child.label}
-                          onClick={() => { onNavigate(child.page); setOpenDropdown(null); }}
+                          onClick={() => go(child.page)}
                           className="w-full text-left px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-950 transition-colors font-medium"
                         >
                           {child.label}
@@ -163,7 +190,7 @@ function Navigation({
             </div>
           ))}
           <button
-            onClick={() => onNavigate('give')}
+            onClick={() => go('give')}
             className="px-5 py-2.5 bg-white text-gray-950 text-sm font-bold rounded-full hover:bg-gray-100 transition-colors"
           >
             Give Now
@@ -187,7 +214,7 @@ function Navigation({
             <div key={link.label}>
               {'page' in link ? (
                 <button
-                  onClick={() => { onNavigate(link.page); setMenuOpen(false); }}
+                  onClick={() => go(link.page)}
                   className="w-full text-left px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 transition-colors"
                 >
                   {link.label}
@@ -209,7 +236,7 @@ function Navigation({
                       {link.children.map((child) => (
                         <button
                           key={child.label}
-                          onClick={() => { onNavigate(child.page); setMenuOpen(false); setOpenMobileSection(null); }}
+                          onClick={() => go(child.page)}
                           className="w-full text-left px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors border-l-2 border-white/10 ml-4"
                         >
                           {child.label}
@@ -223,7 +250,7 @@ function Navigation({
           ))}
           <div className="px-6 py-4">
             <button
-              onClick={() => { onNavigate('give'); setMenuOpen(false); }}
+              onClick={() => go('give')}
               className="w-full py-3 bg-white text-gray-950 font-bold rounded-full text-sm hover:bg-gray-100 transition-colors"
             >
               Give Now
@@ -235,7 +262,14 @@ function Navigation({
   );
 }
 
-function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
+function Footer() {
+  const navigate = useNavigate();
+
+  const go = (page: Page) => {
+    navigate(PAGE_PATHS[page]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className="bg-gray-950 text-gray-400 pt-12 sm:pt-16 pb-8 sm:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -275,7 +309,7 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
                 ] as [string, Page][]
               ).map(([l, p]) => (
                 <li key={l}>
-                  <button onClick={() => onNavigate(p)} className="hover:text-white transition-colors text-left">
+                  <button onClick={() => go(p)} className="hover:text-white transition-colors text-left">
                     {l}
                   </button>
                 </li>
@@ -297,11 +331,16 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
                 ] as [string, Page][]
               ).map(([l, p]) => (
                 <li key={l}>
-                  <button onClick={() => onNavigate(p)} className="hover:text-white transition-colors text-left">
+                  <button onClick={() => go(p)} className="hover:text-white transition-colors text-left">
                     {l}
                   </button>
                 </li>
               ))}
+              <li>
+                <button onClick={() => { navigate('/b3-prayer-movement'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-white transition-colors text-left">
+                  Pray
+                </button>
+              </li>
               <li>
                 <a href="http://www.dmsmm.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                   DMS Association
@@ -334,9 +373,9 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-600">
           <span>&copy; {new Date().getFullYear()} Empower Asia Bible Translation Movement. All Rights Reserved.</span>
           <div className="flex gap-6 flex-wrap justify-center sm:justify-end">
-            <button onClick={() => onNavigate('privacy')} className="hover:text-gray-400 transition-colors">Privacy Policy</button>
-            <button onClick={() => onNavigate('terms')} className="hover:text-gray-400 transition-colors">Terms of Service</button>
-            <button onClick={() => onNavigate('cookie')} className="hover:text-gray-400 transition-colors">Cookie Policy</button>
+            <button onClick={() => go('privacy')} className="hover:text-gray-400 transition-colors">Privacy Policy</button>
+            <button onClick={() => go('terms')} className="hover:text-gray-400 transition-colors">Terms of Service</button>
+            <button onClick={() => go('cookie')} className="hover:text-gray-400 transition-colors">Cookie Policy</button>
           </div>
         </div>
       </div>
@@ -345,7 +384,8 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -355,42 +395,51 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavigate = (page: Page) => {
-    setCurrentPage(page);
-    setMenuOpen(false);
+  // Scroll to top on route change
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
+  const onNavigate = (page: Page) => {
+    navigate(PAGE_PATHS[page]);
+    setMenuOpen(false);
   };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       <Navigation
-        onNavigate={handleNavigate}
-        currentPage={currentPage}
         scrolled={scrolled}
         menuOpen={menuOpen}
         setMenuOpen={setMenuOpen}
       />
 
       <main>
-        {currentPage === 'home' && <HomePage onNavigate={handleNavigate} />}
-        {currentPage === 'team' && <TeamPage />}
-        {currentPage === 'story' && <StoryPage />}
-        {currentPage === 'process' && <ProcessPage />}
-        {currentPage === 'beliefs' && <BeliefsPage />}
-        {currentPage === 'translations' && <TranslationsPage />}
-        {currentPage === 'ten-stories' && <TenStoriesPage />}
-        {currentPage === 'movement-video' && <MovementVideoPage />}
-        {currentPage === 'give' && <GivePage />}
-        {currentPage === 'blog' && <BlogPage onNavigate={handleNavigate} />}
-        {currentPage === 'blog-b3' && <BlogPostB3Page onNavigate={handleNavigate} />}
-        {currentPage === 'contact' && <ContactPage />}
-        {currentPage === 'terms' && <TermsPage />}
-        {currentPage === 'privacy' && <PrivacyPage />}
-        {currentPage === 'cookie' && <CookiePage />}
-        {currentPage === 'training-videos' && <TrainingVideosPage />}
+        <Routes>
+          <Route path="/" element={<HomePage onNavigate={onNavigate} />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/story" element={<StoryPage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/beliefs" element={<BeliefsPage />} />
+          <Route path="/translations" element={<TranslationsPage />} />
+          <Route path="/ten-stories" element={<TenStoriesPage />} />
+          <Route path="/ten-stories/:slug" element={<LanguageStoryPage />} />
+          <Route path="/movement-video" element={<MovementVideoPage />} />
+          <Route path="/give" element={<GivePage />} />
+          <Route path="/blog" element={<BlogPage onNavigate={onNavigate} />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/cookie" element={<CookiePage />} />
+          <Route path="/training-videos" element={<TrainingVideosPage />} />
+          <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
+          <Route path="/b3-stories" element={<B3StoriesPage />} />
+          <Route path="/b3-stories/bridges/:slug" element={<BridgePage />} />
+          <Route path="*" element={<HomePage onNavigate={onNavigate} />} />
+        </Routes>
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      <Footer />
     </div>
   );
 }

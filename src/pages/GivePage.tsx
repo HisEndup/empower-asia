@@ -4,15 +4,16 @@ export default function GivePage() {
   useEffect(() => {
     const existing = document.querySelector('script[src="https://apps.idonate.com/idonate-giving-form.js"]');
     if (existing) {
-      existing.remove();
+      // Script already loaded — trigger iDonate re-init if available
+      if (typeof (window as any).iDonateInit === 'function') {
+        (window as any).iDonateInit();
+      }
+      return;
     }
     const script = document.createElement('script');
     script.src = 'https://apps.idonate.com/idonate-giving-form.js';
     script.async = true;
     document.body.appendChild(script);
-    return () => {
-      script.remove();
-    };
   }, []);
 
   return (

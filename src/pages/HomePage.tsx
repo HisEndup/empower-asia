@@ -41,29 +41,29 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
   return (
     <div className="bg-white">
 
-      {/* ── HERO (YWAM-style) ── */}
-      <section className="relative min-h-screen overflow-hidden">
+      {/* ── HERO ── */}
+      <section className="relative min-h-[60vh] sm:min-h-screen overflow-hidden">
         {/* Background photo */}
         <img
           src="/IMG_5491.jpg"
           alt="Baptism in Myanmar"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
-        {/* Dark overlay for readability */}
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/50 to-gray-950/70" />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center pt-32 sm:pt-44 pb-16 sm:pb-20 px-4 sm:px-6">
-          <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-4 sm:mb-6">
+        <div className="relative z-10 flex flex-col items-center text-center pt-24 sm:pt-44 pb-16 sm:pb-20 px-4 sm:px-6">
+          <p className="text-white/70 text-xs font-bold uppercase tracking-widest mb-3 sm:mb-6">
             Church-Centric Bible Translation Movement
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.92] tracking-tight mb-6 sm:mb-8 max-w-4xl drop-shadow-lg">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight sm:leading-[0.92] tracking-tight mb-4 sm:mb-8 max-w-4xl drop-shadow-lg">
             God's Word.<br />Every People.
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white/85 max-w-xl mb-8 sm:mb-10 leading-relaxed drop-shadow px-2">
+          <p className="text-sm sm:text-lg md:text-xl text-white/85 max-w-xl mb-6 sm:mb-10 leading-relaxed drop-shadow px-2">
             Empowering indigenous translators to bring Scripture to every people across the Buddhist world of Asia.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full max-w-sm sm:max-w-none">
+          <div className="flex flex-col gap-3 w-full max-w-xs sm:max-w-none sm:flex-row sm:gap-4 sm:justify-center">
             <button
               onClick={() => onNavigate('story')}
               className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-gray-950 font-bold rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-lg text-sm sm:text-base"
@@ -79,13 +79,13 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
           </div>
         </div>
 
-        {/* Bottom-left video badge (YWAM style) */}
+        {/* Bottom-left video badge — hidden on mobile to avoid overlap */}
         <button
           onClick={() => onNavigate('movement-video')}
-          className="absolute bottom-4 sm:bottom-8 left-4 sm:left-6 flex items-center gap-2 sm:gap-3 bg-gray-950/80 backdrop-blur-sm text-white rounded-2xl px-3 sm:px-4 py-2 sm:py-3 hover:bg-gray-900 transition-colors z-10"
+          className="hidden sm:flex absolute bottom-8 left-6 items-center gap-3 bg-gray-950/80 backdrop-blur-sm text-white rounded-2xl px-4 py-3 hover:bg-gray-900 transition-colors z-10"
         >
           <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0">
-            <svg viewBox="0 0 24 24" fill="gray950" className="w-4 h-4 ml-0.5 fill-gray-900">
+            <svg viewBox="0 0 24 24" className="w-4 h-4 ml-0.5 fill-gray-900">
               <polygon points="5,3 19,12 5,21" />
             </svg>
           </div>
@@ -245,8 +245,8 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
                 alt="10 Stories of Jesus community"
                 className="rounded-2xl sm:rounded-3xl shadow-2xl w-full h-64 sm:h-80 md:h-[400px] object-cover"
               />
-              <div className="absolute -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 bg-gray-950 text-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl">
-                <div className="text-2xl sm:text-3xl font-black">75</div>
+              <div className="absolute -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 bg-gray-950 text-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl max-w-[80px] sm:max-w-none">
+                <div className="text-xl sm:text-3xl font-black">75</div>
                 <div className="text-xs font-medium text-gray-400 mt-1">Languages<br />Translated</div>
               </div>
             </div>
