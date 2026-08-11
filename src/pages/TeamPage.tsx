@@ -34,7 +34,7 @@ const TEAM: {
     bio: 'Kirsty Jones is a businesswoman, an active disciple maker and educator in her community of Haywood County, Tennessee. Her first mission trip was to Asia and she now serves as the Empower Asia Board Secretary and on several other boards.',
     photo: '/Kirsty_Jones.webp',
     initial: 'K',
-    objectPosition: '50% 15%',
+    objectPosition: '50% 0%',
   },
   {
     name: 'Misty Kline',
