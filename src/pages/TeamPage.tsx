@@ -176,45 +176,41 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Portrait Grid */}
+      {/* Member List */}
       <section className="py-10 sm:py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="divide-y divide-gray-100">
             {TEAM.map((member) => (
               <button
                 key={member.name}
                 onClick={() => setSelected(member)}
-                className="group relative w-full text-left focus:outline-none rounded-xl sm:rounded-2xl overflow-hidden shadow hover:shadow-2xl transition-all duration-500"
-                style={{ aspectRatio: '3/4' }}
+                className="group w-full text-left flex items-start gap-5 sm:gap-7 py-6 sm:py-8 hover:bg-gray-50 transition-colors -mx-4 px-4 sm:-mx-6 sm:px-6 focus:outline-none"
               >
-                {/* Background */}
-                {member.photo ? (
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    style={member.objectPosition ? { objectPosition: member.objectPosition } : undefined}
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                    <span className="text-5xl sm:text-6xl font-black text-gray-500">{member.initial}</span>
-                  </div>
-                )}
+                {/* Photo */}
+                <div className="shrink-0 w-24 h-24 sm:w-36 sm:h-36 rounded-xl overflow-hidden bg-gray-800">
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover object-top"
+                      style={member.objectPosition ? { objectPosition: member.objectPosition } : undefined}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+                      <span className="text-3xl sm:text-4xl font-black text-gray-500">{member.initial}</span>
+                    </div>
+                  )}
+                </div>
 
-                {/* Bottom gradient always visible */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-
-                {/* Hover — full overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-400" />
-
-                {/* Name / role / bio bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                  <p className="text-white font-bold text-xs sm:text-sm leading-snug">{member.name}</p>
-                  <p className="text-white/55 text-[10px] sm:text-xs mt-0.5 leading-tight">{member.role}</p>
-                  <p className="text-white/75 text-[10px] sm:text-xs leading-relaxed mt-2 line-clamp-4">
-                    {member.bio}
-                  </p>
+                {/* Text */}
+                <div className="flex-1 min-w-0 pt-1">
+                  <p className="text-gray-950 font-bold text-base sm:text-lg leading-snug">{member.name}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mt-0.5 mb-3">{member.role}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+                  {(member.email || member.website) && (
+                    <p className="text-gray-400 text-xs mt-3 group-hover:text-gray-600 transition-colors">Tap for contact details →</p>
+                  )}
                 </div>
               </button>
             ))}
