@@ -172,7 +172,7 @@ export default function TeamPage() {
           <p className="text-base sm:text-xl text-gray-300 leading-relaxed max-w-2xl">
             Indigenous leaders, translators, church planters, and supporters united around one mission — God's Word for every people.
           </p>
-          <p className="text-gray-500 text-xs mt-3">Tap a card to learn more</p>
+          <p className="text-gray-500 text-xs mt-3">Tap a card for contact details</p>
         </div>
       </section>
 
@@ -203,17 +203,16 @@ export default function TeamPage() {
                 )}
 
                 {/* Bottom gradient always visible */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
                 {/* Hover — full overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-400" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-400" />
 
-                {/* Name / role bottom */}
+                {/* Name / role / bio bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
                   <p className="text-white font-bold text-xs sm:text-sm leading-snug">{member.name}</p>
                   <p className="text-white/55 text-[10px] sm:text-xs mt-0.5 leading-tight">{member.role}</p>
-                  {/* Bio on hover */}
-                  <p className="text-white/80 text-[10px] sm:text-xs leading-relaxed mt-2 line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                  <p className="text-white/75 text-[10px] sm:text-xs leading-relaxed mt-2 line-clamp-4">
                     {member.bio}
                   </p>
                 </div>
