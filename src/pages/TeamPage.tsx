@@ -10,6 +10,7 @@ const TEAM: {
   photo?: string;
   email?: string;
   website?: string;
+  objectPosition?: string;
 }[] = [
   {
     name: 'Jay & Anna Pratt',
@@ -33,6 +34,7 @@ const TEAM: {
     bio: 'Kirsty Jones is a businesswoman, an active disciple maker and educator in her community of Haywood County, Tennessee. Her first mission trip was to Asia and she now serves as the Empower Asia Board Secretary and on several other boards.',
     photo: '/Kirsty_Jones.webp',
     initial: 'K',
+    objectPosition: 'center',
   },
   {
     name: 'Misty Kline',
@@ -127,6 +129,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
             src={member.photo}
             alt={member.name}
             className="w-full h-56 sm:h-64 object-cover object-top"
+            style={member.objectPosition ? { objectPosition: member.objectPosition } : undefined}
           />
         ) : (
           <div className="w-full h-44 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
@@ -190,6 +193,7 @@ export default function TeamPage() {
                     src={member.photo}
                     alt={member.name}
                     className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    style={member.objectPosition ? { objectPosition: member.objectPosition } : undefined}
                     loading="lazy"
                   />
                 ) : (
