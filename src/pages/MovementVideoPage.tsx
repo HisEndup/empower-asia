@@ -32,7 +32,7 @@ const RESOURCES = [
     title: '10 Stories of Jesus',
     desc: 'Life-changing Gospel accounts translated into 24 languages across the Buddhist world. Available to read and listen to for free.',
     type: 'Resource',
-    href: 'https://empowerasia.org/10-stories-of-jesus',
+    href: 'https://www.b3stories.com',
   },
   {
     title: 'Training Materials',
