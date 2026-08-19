@@ -263,13 +263,13 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
               </p>
               <div className="flex flex-wrap gap-3 sm:gap-4">
                 <button
-                  onClick={() => onNavigate('ten-stories')}
+                  onClick={() => window.open('https://www.b3stories.com', '_blank')}
                   className="px-5 sm:px-7 py-3 sm:py-3.5 bg-gray-950 text-white font-semibold rounded-full hover:bg-black transition-colors text-sm sm:text-base"
                 >
                   Explore the Stories
                 </button>
                 <button
-                  onClick={() => onNavigate('translations')}
+                  onClick={() => window.open('https://www.b3stories.com', '_blank')}
                   className="px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-gray-200 text-gray-700 font-semibold rounded-full hover:border-gray-400 transition-colors text-sm sm:text-base"
                 >
                   All Translations

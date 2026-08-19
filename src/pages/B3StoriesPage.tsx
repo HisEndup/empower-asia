@@ -106,7 +106,6 @@ export default function B3StoriesPage() {
           </div>
 
           {bridges.length === 0 ? (
-            <p className="text-center text-white/40 text-sm py-12">Resources coming soon.</p>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {bridges.map((bridge) => (
