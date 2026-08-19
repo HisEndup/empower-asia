@@ -62,12 +62,14 @@ export default function B3StoriesPage() {
                 through oral storytelling — a method deeply rooted in Asian culture. These stories are
                 translated into local languages to be memorized, told, and retold across villages and families.
               </p>
-              <button
-                onClick={() => { navigate('/ten-stories'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              <a
+                href="https://www.b3stories.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-950 text-white font-semibold rounded-full hover:bg-gray-800 transition-colors"
               >
                 Explore the Stories <ArrowRight size={16} />
-              </button>
+              </a>
             </div>
             <div className="flex justify-center">
               <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-amber-50 to-amber-100 flex flex-col items-center justify-center shadow-inner">
@@ -90,9 +92,17 @@ export default function B3StoriesPage() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
               Bridges for Buddhists
             </h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            <p className="text-white/60 text-lg max-w-2xl mx-auto mb-8">
               Thoughtful resources designed to build bridges between Buddhist thought and the Gospel of Jesus Christ.
             </p>
+            <a
+              href="https://www.b3stories.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-950 font-semibold rounded-full hover:bg-gray-100 transition-colors"
+            >
+              Visit Bridges for Buddhists <ArrowRight size={16} />
+            </a>
           </div>
 
           {bridges.length === 0 ? (
