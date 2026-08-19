@@ -1,5 +1,9 @@
 {
-  ,"redirects":[{"source":"/ten-stories","destination":"https://www.b3stories.com","permanent":false},{"source":"/ten-stories/(.*)","destination":"https://www.b3stories.com","permanent":false}],"rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "redirects": [
+    {"source": "/ten-stories", "destination": "https://www.b3stories.com", "permanent": false},
+    {"source": "/ten-stories/(.*)", "destination": "https://www.b3stories.com", "permanent": false}
+  ],
+  "rewrites": [
+    {"source": "/(.*)", "destination": "/index.html"}
   ]
 }
