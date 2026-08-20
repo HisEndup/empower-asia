@@ -105,8 +105,7 @@ export default function B3StoriesPage() {
             </a>
           </div>
 
-          {bridges.length === 0 ? (
-          ) : (
+          {bridges.length > 0 && (
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {bridges.map((bridge) => (
                 <div
