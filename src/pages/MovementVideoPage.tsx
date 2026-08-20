@@ -38,13 +38,13 @@ const RESOURCES = [
     title: 'Training Materials',
     desc: 'Church-centric Bible translation training resources used to equip indigenous translators and church planters across Asia.',
     type: 'Resource',
-    href: 'https://empowerasia.org/our-resources',
+    href: 'https://www.b3stories.com',
   },
   {
     title: 'Barriers to Sharing the Gospel with Buddhists',
     desc: '"Barriers that Hinder Buddhists from Understanding the Gospel and Bridges" — a comprehensive guide for outreach and evangelism in Buddhist contexts.',
     type: 'PDF Download',
-    href: '/Barriers_that_Hinder_Buddhists_understanding_t.pdf',
+    href: 'https://www.b3stories.com',
   },
 ];
 
