@@ -323,7 +323,6 @@ function Footer() {
               {(
                 [
                   ['Bible Translations', 'translations'],
-                  ['10 Stories of Jesus', 'ten-stories'],
                   ['Movement Video', 'movement-video'],
                   ['Training Videos & Sermons', 'training-videos'],
                   ['Blog', 'blog'],
@@ -421,8 +420,6 @@ export default function App() {
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/beliefs" element={<BeliefsPage />} />
           <Route path="/translations" element={<TranslationsPage />} />
-          <Route path="/ten-stories" element={<TenStoriesPage />} />
-          <Route path="/ten-stories/:slug" element={<LanguageStoryPage />} />
           <Route path="/movement-video" element={<MovementVideoPage />} />
           <Route path="/give" element={<GivePage />} />
           <Route path="/blog" element={<BlogPage onNavigate={onNavigate} />} />
