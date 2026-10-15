@@ -78,7 +78,7 @@ export default function B3StoriesPage() {
                 <p className="text-amber-600 text-sm">of Jesus</p>
               </div>
               <a
-                href="https://www.b3stories.com"
+                href="https://www.b3stories.com/library?initialFilter=barriers"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-64 h-64 rounded-3xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex flex-col items-center justify-center shadow-inner hover:from-indigo-100 hover:to-indigo-200 transition-colors"
@@ -106,7 +106,7 @@ export default function B3StoriesPage() {
               Thoughtful resources designed to build bridges between Buddhist thought and the Gospel of Jesus Christ.
             </p>
             <a
-              href="https://www.b3stories.com"
+              href="https://www.b3stories.com/library?initialFilter=barriers"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-950 font-semibold rounded-full hover:bg-gray-100 transition-colors"
