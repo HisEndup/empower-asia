@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Download, BookOpen } from 'lucide-react';
+import { ArrowRight, Download, BookOpen, Link as LinkIcon } from 'lucide-react';
 import { client } from '../lib/sanityClient';
 
 interface Bridge {
@@ -71,11 +71,29 @@ export default function B3StoriesPage() {
                 Explore the Stories <ArrowRight size={16} />
               </a>
             </div>
-            <div className="flex justify-center">
+            <div className="flex flex-col gap-6 items-center justify-center">
               <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-amber-50 to-amber-100 flex flex-col items-center justify-center shadow-inner">
                 <BookOpen size={64} className="text-amber-400 mb-4" />
                 <p className="text-amber-700 font-bold text-lg">10 Stories</p>
                 <p className="text-amber-600 text-sm">of Jesus</p>
+              </div>
+              <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-indigo-50 to-purple-100 flex flex-col items-center justify-center shadow-inner">
+                <LinkIcon size={64} className="text-indigo-400 mb-4" />
+                <p className="text-indigo-700 font-bold text-lg">Bridges for Buddhists</p>
+                <p className="text-purple-600 text-sm">for the Buddhist world</p>
+              </div>
+              <div className="max-w-xs text-center">
+                <p className="text-gray-600 leading-relaxed mb-3">
+                  Thoughtful resources designed to build bridges between Buddhist thought and the Gospel of Jesus Christ.
+                </p>
+                <a
+                  href="https://www.b3stories.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-indigo-700 font-semibold hover:text-indigo-900 transition-colors"
+                >
+                  Visit Bridges for Buddhists <ArrowRight size={14} />
+                </a>
               </div>
             </div>
           </div>
