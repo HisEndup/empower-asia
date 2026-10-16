@@ -7,7 +7,7 @@ interface CaseStudy {
   author?: string;
   date?: string;
   summary: string;
-  stats: { value: string; label: string }[];
+  stats?: { value: string; label: string }[];
   pdfUrl: string;
 }
 
@@ -42,6 +42,14 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     pdfUrl: '/Case_Study_2.pdf',
   },
+  {
+    category: 'Missions Podcast',
+    title: 'Jay Judson — Engaging Missions Podcast',
+    subtitle: 'Stories and Insights from the Mission Field',
+    summary:
+      'A compelling missions conversation featuring Jay Judson sharing firsthand insights on engaging communities with the Gospel across Asia. This resource explores practical strategies for cross-cultural mission work, disciple making, and church planting movements in the Buddhist world.',
+    pdfUrl: '/Case_Study_3.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -67,14 +75,16 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
         </div>
       )}
       <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">{study.summary}</p>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
-        {study.stats.map((stat) => (
-          <div key={stat.label} className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-center">
-            <p className="text-2xl sm:text-3xl font-extrabold text-white mb-1">{stat.value}</p>
-            <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
-          </div>
-        ))}
-      </div>
+      {study.stats && (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+          {study.stats.map((stat) => (
+            <div key={stat.label} className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-center">
+              <p className="text-2xl sm:text-3xl font-extrabold text-white mb-1">{stat.value}</p>
+              <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      )}
       <a
         href={study.pdfUrl}
         target="_blank"
