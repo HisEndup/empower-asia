@@ -1,4 +1,69 @@
-import { BookOpen } from 'lucide-react';
+import { FileText, Calendar, User } from 'lucide-react';
+
+interface CaseStudy {
+  category: string;
+  title: string;
+  author: string;
+  date: string;
+  summary: string;
+  stats: { value: string; label: string }[];
+  pdfUrl: string;
+}
+
+const CASE_STUDIES: CaseStudy[] = [
+  {
+    category: 'Church Planting Movement',
+    title: 'From Institutional Church to Church Planting Movement',
+    author: 'Pastor Jimmy Tam — Sunrise Christian Community, Alhambra, CA',
+    date: 'October 2017',
+    summary:
+      'In 2015, Sunrise Christian Community began a journey to transform from a conventional attractional church into a Church Planting Movement. Within 12 months, 60% of the congregation became active disciple makers, 7 house churches were planted, 7 seeker groups started, and 9 people were baptized — a dramatic shift from just 5–7 baptisms per year over the previous 14 years.',
+    stats: [
+      { value: '50 → 60%', label: 'Members Active' },
+      { value: '7', label: 'House Churches' },
+      { value: '7', label: 'Seeker Groups' },
+      { value: '9', label: 'Baptisms in 6 Months' },
+    ],
+    pdfUrl:
+      'https://static1.squarespace.com/static/5ddf5eee3d393a7e0619feb8/t/5ddfab8c305b2260c98020e4/1574939533453/Case%2Bstudy%2Bof%2Bthe%2Btransformation%2Bof%2Ba%2Blocal%2Bchurch+%281%29.pdf',
+  },
+];
+
+function CaseStudyCard({ study }: { study: CaseStudy }) {
+  return (
+    <article className="rounded-3xl bg-gray-900 border border-white/10 p-6 sm:p-10">
+      <span className="inline-block bg-blue-500/15 text-blue-300 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5">
+        {study.category}
+      </span>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">{study.title}</h2>
+      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-6 text-sm text-gray-400 mb-6">
+        <span className="inline-flex items-center gap-2">
+          <User size={14} className="text-gray-500 shrink-0" /> {study.author}
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <Calendar size={14} className="text-gray-500 shrink-0" /> {study.date}
+        </span>
+      </div>
+      <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">{study.summary}</p>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        {study.stats.map((stat) => (
+          <div key={stat.label} className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-center">
+            <p className="text-2xl sm:text-3xl font-extrabold text-white mb-1">{stat.value}</p>
+            <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+      <a
+        href={study.pdfUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-950 font-semibold rounded-full hover:bg-gray-200 transition-colors"
+      >
+        <FileText size={16} /> Read Full PDF
+      </a>
+    </article>
+  );
+}
 
 export default function CaseStudiesPage() {
   return (
@@ -6,29 +71,21 @@ export default function CaseStudiesPage() {
       {/* Hero */}
       <section className="pt-32 sm:pt-40 pb-10 sm:pb-12 bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">Resources</p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">Case Studies</h1>
+          <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">Case Studies</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
+            Stories of Transformation
+          </h1>
           <p className="text-base sm:text-xl text-gray-400 max-w-2xl leading-relaxed">
             Real stories of God's Word transforming lives and communities across Asia.
           </p>
         </div>
       </section>
 
-      {/* Coming soon */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
-        <div className="rounded-3xl bg-gray-900 border border-white/10 px-6 py-16 sm:py-20 text-center">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-white/10 flex items-center justify-center">
-            <BookOpen size={28} className="text-blue-400" />
-          </div>
-          <span className="inline-block bg-white/10 text-white/70 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-4">
-            Coming Soon
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Stories are on their way</h2>
-          <p className="text-gray-400 max-w-xl mx-auto leading-relaxed">
-            We're gathering case studies from translation and storying teams across Asia. Check back soon to
-            read how communities are encountering Jesus through Scripture in their heart language.
-          </p>
-        </div>
+      {/* Case studies */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20 space-y-8">
+        {CASE_STUDIES.map((study) => (
+          <CaseStudyCard key={study.title} study={study} />
+        ))}
       </section>
     </div>
   );
