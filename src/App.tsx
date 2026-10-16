@@ -21,6 +21,7 @@ import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import CookiePage from './pages/CookiePage';
 import TrainingVideosPage from './pages/TrainingVideosPage';
+import CaseStudiesPage from './pages/CaseStudiesPage';
 
 export type Page =
   | 'home'
@@ -38,6 +39,7 @@ export type Page =
   | 'privacy'
   | 'cookie'
   | 'training-videos'
+  | 'case-studies'
   | 'b3-stories';
 
 export const PAGE_PATHS: Record<Page, string> = {
@@ -56,6 +58,7 @@ export const PAGE_PATHS: Record<Page, string> = {
   privacy: '/privacy',
   cookie: '/cookie',
   'training-videos': '/training-videos',
+  'case-studies': '/case-studies',
   'b3-stories': '/b3-stories',
 };
 
@@ -82,6 +85,7 @@ const NAV_LINKS: NavItem[] = [
       { label: 'B3 Stories', page: 'b3-stories' },
       { label: 'Movement Video', page: 'movement-video' },
       { label: 'Training Videos & Sermons', page: 'training-videos' },
+      { label: 'Case Studies', page: 'case-studies' },
     ],
   },
 ];
@@ -325,6 +329,7 @@ function Footer() {
                   ['Bible Translations', 'translations'],
                   ['Movement Video', 'movement-video'],
                   ['Training Videos & Sermons', 'training-videos'],
+                  ['Case Studies', 'case-studies'],
                   ['Blog', 'blog'],
                   ['Contact Us', 'contact'],
                 ] as [string, Page][]
@@ -429,6 +434,7 @@ export default function App() {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cookie" element={<CookiePage />} />
           <Route path="/training-videos" element={<TrainingVideosPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
           <Route path="/b3-stories" element={<B3StoriesPage />} />
           <Route path="/b3-stories/bridges/:slug" element={<BridgePage />} />
