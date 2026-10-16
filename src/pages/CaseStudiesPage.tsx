@@ -105,6 +105,19 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     pdfUrl: '/Case_Study_8.pdf',
   },
+  {
+    category: 'Movement Catalysis',
+    title: 'Dealing with Hindrances in Catalyzing Micro-Church Movements',
+    summary:
+      'A practical guide addressing the most common obstacles encountered when catalyzing Micro-Church Movements (MCM). This case study identifies key hindrances — cultural, institutional, theological, and relational — and provides field-tested strategies for overcoming them. Essential reading for movement leaders and missionaries working to multiply house churches in resistant contexts.',
+    stats: [
+      { value: 'Micro-Church', label: 'Movements' },
+      { value: 'Obstacle', label: 'Analysis' },
+      { value: 'Field-Tested', label: 'Strategies' },
+      { value: 'Movement', label: 'Catalysis' },
+    ],
+    pdfUrl: '/Case_Study_9.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
