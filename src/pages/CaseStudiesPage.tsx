@@ -92,6 +92,19 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     pdfUrl: '/Case_Study_7.pdf',
   },
+  {
+    category: 'CPM Assessment',
+    title: 'Smith CPM Assessment',
+    summary:
+      'An independent assessment of a Church Planting Movement evaluating the authenticity, health, and reproducibility of disciple-making and church multiplication. This report applies rigorous CPM evaluation criteria to verify movement claims, examine leadership structures, and assess long-term sustainability — providing a model for how movements can be accountable and credible.',
+    stats: [
+      { value: 'Independent', label: 'Assessment' },
+      { value: 'CPM', label: 'Verification' },
+      { value: 'Movement', label: 'Health' },
+      { value: 'Reproducible', label: 'Model' },
+    ],
+    pdfUrl: '/Case_Study_8.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -121,7 +134,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
           {study.stats.map((stat) => (
             <div key={stat.label} className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-center">
-              <p className="text-2xl sm:text-3xl font-extrabold text-white mb-1">{stat.value}</p>
+              <p className="text-lg sm:text-xl font-extrabold text-white mb-1 break-words hyphens-auto">{stat.value}</p>
               <p className="text-xs sm:text-sm text-gray-400">{stat.label}</p>
             </div>
           ))}
