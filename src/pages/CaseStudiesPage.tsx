@@ -58,6 +58,14 @@ const CASE_STUDIES: CaseStudy[] = [
       "This historical case study examines how the early American church experienced explosive multiplication through grassroots movements, circuit riders, and lay-led gatherings — long before modern missions methodology existed. The patterns that emerged in early America offer timeless principles for today's church planting movements across Asia and the Buddhist world.",
     pdfUrl: '/Case_Study_4.pdf',
   },
+  {
+    category: 'Church Leadership',
+    title: 'George Patterson on Opposition to Multiplying Micro-Church Networks',
+    subtitle: 'Navigating Resistance in Church Planting Movements',
+    summary:
+      'Veteran missionary George Patterson addresses the common opposition and resistance faced when establishing multiplying micro-church networks. Drawing from decades of field experience, Patterson provides practical wisdom for leaders navigating institutional pushback, cultural barriers, and theological objections while maintaining movement momentum.',
+    pdfUrl: '/Case_Study_5.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
