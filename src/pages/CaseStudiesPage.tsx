@@ -3,8 +3,9 @@ import { FileText, Calendar, User } from 'lucide-react';
 interface CaseStudy {
   category: string;
   title: string;
-  author: string;
-  date: string;
+  subtitle?: string;
+  author?: string;
+  date?: string;
   summary: string;
   stats: { value: string; label: string }[];
   pdfUrl: string;
@@ -27,6 +28,20 @@ const CASE_STUDIES: CaseStudy[] = [
     pdfUrl:
       '/Case_Study_1.pdf',
   },
+  {
+    category: 'Micro-Church Network',
+    title: 'Multiplying Micro-Church Networks: The Nevius Method',
+    subtitle: 'A Prophetic Voice and Vision for the Korean Church',
+    summary:
+      'This case study examines the Nevius Method — a revolutionary approach to church planting that transformed Korea into one of the most evangelized nations in Asia. By focusing on systematic Bible study, lay leadership, and self-supporting indigenous churches, the Nevius Method produced a multiplying micro-church network that became a prophetic model for movements worldwide.',
+    stats: [
+      { value: '2 Weeks', label: 'in Korea' },
+      { value: '50+ Years', label: 'of Impact' },
+      { value: 'Millions', label: 'of Believers' },
+      { value: 'Indigenous', label: '& Self-Supporting' },
+    ],
+    pdfUrl: '/Case_Study_2.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
@@ -36,14 +51,21 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
         {study.category}
       </span>
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">{study.title}</h2>
-      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-6 text-sm text-gray-400 mb-6">
-        <span className="inline-flex items-center gap-2">
-          <User size={14} className="text-gray-500 shrink-0" /> {study.author}
-        </span>
-        <span className="inline-flex items-center gap-2">
-          <Calendar size={14} className="text-gray-500 shrink-0" /> {study.date}
-        </span>
-      </div>
+      {study.subtitle && <p className="text-lg sm:text-xl text-gray-400 italic -mt-2 mb-5">{study.subtitle}</p>}
+      {(study.author || study.date) && (
+        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-6 text-sm text-gray-400 mb-6">
+          {study.author && (
+            <span className="inline-flex items-center gap-2">
+              <User size={14} className="text-gray-500 shrink-0" /> {study.author}
+            </span>
+          )}
+          {study.date && (
+            <span className="inline-flex items-center gap-2">
+              <Calendar size={14} className="text-gray-500 shrink-0" /> {study.date}
+            </span>
+          )}
+        </div>
+      )}
       <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">{study.summary}</p>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
         {study.stats.map((stat) => (
