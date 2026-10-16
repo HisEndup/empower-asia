@@ -122,11 +122,11 @@ const CASE_STUDIES: CaseStudy[] = [
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
-    <article className="rounded-3xl bg-gray-900 border border-white/10 p-6 sm:p-10">
-      <span className="inline-block bg-blue-500/15 text-blue-300 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5">
+    <article className="h-full flex flex-col rounded-3xl bg-gray-900 border border-white/10 p-6 sm:p-8">
+      <span className="self-start inline-block bg-blue-500/15 text-blue-300 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5">
         {study.category}
       </span>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-5 leading-tight">{study.title}</h2>
+      <h2 className="text-2xl lg:text-3xl font-bold text-white mb-5 leading-tight">{study.title}</h2>
       {study.subtitle && <p className="text-lg sm:text-xl text-gray-400 italic -mt-2 mb-5">{study.subtitle}</p>}
       {(study.author || study.date) && (
         <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-6 text-sm text-gray-400 mb-6">
@@ -144,7 +144,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       )}
       <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-8">{study.summary}</p>
       {study.stats && (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
           {study.stats.map((stat) => (
             <div key={stat.label} className="rounded-2xl bg-white/5 border border-white/10 p-4 sm:p-5 text-center">
               <p className="text-lg sm:text-xl font-extrabold text-white mb-1 break-words hyphens-auto">{stat.value}</p>
@@ -153,14 +153,16 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
           ))}
         </div>
       )}
-      <a
-        href={study.pdfUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-950 font-semibold rounded-full hover:bg-gray-200 transition-colors"
-      >
-        <FileText size={16} /> Read Full PDF
-      </a>
+      <div className="mt-auto">
+        <a
+          href={study.pdfUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-950 font-semibold rounded-full hover:bg-gray-200 transition-colors"
+        >
+          <FileText size={16} /> Read Full PDF
+        </a>
+      </div>
     </article>
   );
 }
@@ -182,10 +184,12 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Case studies */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20 space-y-8">
-        {CASE_STUDIES.map((study) => (
-          <CaseStudyCard key={study.title} study={study} />
-        ))}
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6 py-16">
+          {CASE_STUDIES.map((study) => (
+            <CaseStudyCard key={study.title} study={study} />
+          ))}
+        </div>
       </section>
     </div>
   );
