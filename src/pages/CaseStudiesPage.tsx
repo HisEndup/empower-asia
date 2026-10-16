@@ -66,6 +66,19 @@ const CASE_STUDIES: CaseStudy[] = [
       'Veteran missionary George Patterson addresses the common opposition and resistance faced when establishing multiplying micro-church networks. Drawing from decades of field experience, Patterson provides practical wisdom for leaders navigating institutional pushback, cultural barriers, and theological objections while maintaining movement momentum.',
     pdfUrl: '/Case_Study_5.pdf',
   },
+  {
+    category: 'Buddhist Background Believers',
+    title: "How God is Multiplying Networks of House Churches Through the Buddhist Background Believers' Movement",
+    summary:
+      'A firsthand account of how God is moving powerfully among Buddhist Background Believers (BBBs) across Asia, multiplying networks of house churches through indigenous leaders. This case study documents the growth of a grassroots movement where former Buddhists are becoming church planters, reaching their own communities with the Gospel through culturally rooted discipleship and oral storytelling.',
+    stats: [
+      { value: 'BBBs', label: 'Buddhist Background Believers' },
+      { value: 'House Church', label: 'Networks' },
+      { value: 'Indigenous', label: 'Leaders' },
+      { value: 'Multiplying', label: 'Movement' },
+    ],
+    pdfUrl: '/Case_Study_6.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
