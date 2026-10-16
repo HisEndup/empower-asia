@@ -25,7 +25,7 @@ const CASE_STUDIES: CaseStudy[] = [
       { value: '9', label: 'Baptisms in 6 Months' },
     ],
     pdfUrl:
-      'https://static1.squarespace.com/static/5ddf5eee3d393a7e0619feb8/t/5ddfab8c305b2260c98020e4/1574939533453/Case%2Bstudy%2Bof%2Bthe%2Btransformation%2Bof%2Ba%2Blocal%2Bchurch+%281%29.pdf',
+      '/Case_Study_1.pdf',
   },
 ];
 
