@@ -79,6 +79,19 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     pdfUrl: '/Case_Study_6.pdf',
   },
+  {
+    category: 'Myanmar CPM Assessment',
+    title: 'Summary of Myanmar Church Planting Movement Assessment',
+    summary:
+      "A comprehensive assessment of the Church Planting Movement (CPM) in Myanmar, documenting verified growth, methodology, and the multiplication of disciples and churches across the country. This report provides an independent evaluation of movement health, leadership development, and the reproducibility of the model across Myanmar's diverse ethnic and linguistic communities.",
+    stats: [
+      { value: 'Myanmar', label: 'Country' },
+      { value: 'CPM', label: 'Assessment' },
+      { value: 'Verified', label: 'Growth' },
+      { value: 'Indigenous', label: 'Leadership' },
+    ],
+    pdfUrl: '/Case_Study_7.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
