@@ -50,6 +50,14 @@ const CASE_STUDIES: CaseStudy[] = [
       'A compelling missions conversation featuring Jay Judson sharing firsthand insights on engaging communities with the Gospel across Asia. This resource explores practical strategies for cross-cultural mission work, disciple making, and church planting movements in the Buddhist world.',
     pdfUrl: '/Case_Study_3.pdf',
   },
+  {
+    category: 'Historical Case Study',
+    title: 'Church Planting Movements in Early America',
+    subtitle: 'Lessons from the First Great Awakening',
+    summary:
+      "This historical case study examines how the early American church experienced explosive multiplication through grassroots movements, circuit riders, and lay-led gatherings — long before modern missions methodology existed. The patterns that emerged in early America offer timeless principles for today's church planting movements across Asia and the Buddhist world.",
+    pdfUrl: '/Case_Study_4.pdf',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
