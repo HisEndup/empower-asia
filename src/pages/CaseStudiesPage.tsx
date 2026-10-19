@@ -127,6 +127,14 @@ const CASE_STUDIES: CaseStudy[] = [
       'Jay Judson joins the Engaging Missions Podcast to discuss church planting and multiplication movements across Asia. Drawing from years of field experience, Jay shares how indigenous leaders are multiplying disciples and house churches in the Buddhist world — and what Western churches can learn from these movements.',
     pdfUrl: 'https://podcasts.apple.com/us/podcast/em016-church-planting-multiplication-with-jay-judson/id859735709?i=1000493381703',
   },
+  {
+    category: 'Podcast',
+    title: 'Engaging Missions — Jay Judson Interview',
+    subtitle: 'July 3, 2014',
+    summary:
+      'Jay Judson sits down with Engaging Missions to discuss church planting and multiplication movements across Asia. A foundational conversation on how indigenous leaders are multiplying disciples and house churches in the Buddhist world.',
+    pdfUrl: 'https://podcasts.apple.com/us/podcast/em016-church-planting-multiplication-with-jay-judson/id859735709?i=1000493381703',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
