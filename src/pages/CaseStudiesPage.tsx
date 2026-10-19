@@ -157,6 +157,13 @@ const CASE_STUDIES: CaseStudy[] = [
       'Jay Judson returns to the Engaging Missions Podcast to share moving stories of people across Asia falling passionately in love with Jesus. A deeply encouraging conversation about what happens when the Gospel takes root in unlikely places and transforms lives from the inside out.',
     pdfUrl: 'https://metacast.app/podcast/engaging-missions/udIIZkfB/em097-it-s-a-beautiful-thing-to-see-someone-fall-passionately-in-love-with-jesus-with-jay-judson/dybRRyjq',
   },
+  {
+    category: 'Testimony',
+    title: 'Supernatural Discipleship with Jay Judson',
+    summary:
+      'Jay Judson explores the supernatural dimension of discipleship — how God moves through signs, wonders, and the power of the Holy Spirit to accelerate disciple-making movements across Asia. A compelling look at what happens when believers step out in faith and trust God for the miraculous in everyday ministry.',
+    pdfUrl: 'https://youtu.be/lApddlDhOjs',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
