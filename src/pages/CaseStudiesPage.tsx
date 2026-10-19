@@ -149,6 +149,14 @@ const CASE_STUDIES: CaseStudy[] = [
       "Jay Judson shares firsthand about the remarkable Church Planting Movement taking place in Myanmar — how indigenous leaders are being equipped, disciples are multiplying, and house churches are spreading across the country. A compelling firsthand account of God moving powerfully in one of Asia's most spiritually diverse nations.",
     pdfUrl: 'https://youtu.be/9K6eidwZekA',
   },
+  {
+    category: 'Podcast',
+    title: "It's a Beautiful Thing to See Someone Fall Passionately in Love with Jesus",
+    subtitle: 'Engaging Missions Podcast — Episode 097, 2015',
+    summary:
+      'Jay Judson returns to the Engaging Missions Podcast to share moving stories of people across Asia falling passionately in love with Jesus. A deeply encouraging conversation about what happens when the Gospel takes root in unlikely places and transforms lives from the inside out.',
+    pdfUrl: 'https://metacast.app/podcast/engaging-missions/udIIZkfB/em097-it-s-a-beautiful-thing-to-see-someone-fall-passionately-in-love-with-jesus-with-jay-judson/dybRRyjq',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
@@ -161,6 +169,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
   // Apple Podcasts links are podcasts.apple.com/.../podcast/..., so check both parts
   const isPodcast = study.pdfUrl.includes('apple.com/') && study.pdfUrl.includes('podcast');
   const isYouTube = study.pdfUrl.includes('youtu');
+  const isPdf = study.pdfUrl.toLowerCase().endsWith('.pdf');
 
   return (
     <article className="h-full flex flex-col rounded-3xl bg-gray-900 border border-white/10 p-6 sm:p-8">
@@ -209,9 +218,13 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
             <>
               <Youtube size={16} /> Watch on YouTube
             </>
-          ) : (
+          ) : isPdf ? (
             <>
               <FileText size={16} /> Read Full PDF
+            </>
+          ) : (
+            <>
+              <Headphones size={16} /> Listen to Podcast
             </>
           )}
         </a>
