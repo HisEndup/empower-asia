@@ -142,6 +142,13 @@ const CASE_STUDIES: CaseStudy[] = [
       "Jay Judson shares his personal testimony and life story — how God called him from his background into a life of church planting and multiplication movements across Asia. A powerful account of faith, obedience, and the transforming work of God in one person's life that sparked a movement.",
     pdfUrl: 'https://youtu.be/DX3xJpfbmI4',
   },
+  {
+    category: 'Myanmar Movement',
+    title: 'Jay Shares About the Myanmar Movement',
+    summary:
+      "Jay Judson shares firsthand about the remarkable Church Planting Movement taking place in Myanmar — how indigenous leaders are being equipped, disciples are multiplying, and house churches are spreading across the country. A compelling firsthand account of God moving powerfully in one of Asia's most spiritually diverse nations.",
+    pdfUrl: 'https://youtu.be/9K6eidwZekA',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
