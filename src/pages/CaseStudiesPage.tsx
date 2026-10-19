@@ -172,6 +172,14 @@ const CASE_STUDIES: CaseStudy[] = [
       'Dr. Victor Choudhrie interviews Jay Judson about the extraordinary Church Planting Movement unfolding in Myanmar. Dr. Choudhrie, a renowned movement catalyst and author, draws out key insights on how the movement started, how it multiplies, and what lessons it holds for the global church.',
     pdfUrl: 'https://youtu.be/mOdhzDG2GPw',
   },
+  {
+    category: 'Myanmar Movement',
+    title: 'Myanmar Movement Interview',
+    subtitle: 'August 25, 2023',
+    summary:
+      'A 2023 interview with Jay Judson providing an updated look at the ongoing Church Planting Movement in Myanmar — the latest developments, how the movement has grown through challenges, and what God continues to do among the peoples of Myanmar through indigenous leaders and multiplying house churches.',
+    pdfUrl: 'https://youtu.be/VjTHvqHdPO0',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
