@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FileText, Calendar, User, Headphones } from 'lucide-react';
+import { FileText, Calendar, User, Headphones, Youtube } from 'lucide-react';
 
 interface CaseStudy {
   category: string;
@@ -135,6 +135,13 @@ const CASE_STUDIES: CaseStudy[] = [
       'Jay Judson sits down with Engaging Missions to discuss church planting and multiplication movements across Asia. A foundational conversation on how indigenous leaders are multiplying disciples and house churches in the Buddhist world.',
     pdfUrl: 'https://podcasts.apple.com/us/podcast/em016-church-planting-multiplication-with-jay-judson/id859735709?i=1000493381703',
   },
+  {
+    category: 'Testimony',
+    title: "Jay's Testimony and Life Story",
+    summary:
+      "Jay Judson shares his personal testimony and life story — how God called him from his background into a life of church planting and multiplication movements across Asia. A powerful account of faith, obedience, and the transforming work of God in one person's life that sparked a movement.",
+    pdfUrl: 'https://youtu.be/DX3xJpfbmI4',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
@@ -144,7 +151,9 @@ const CATEGORIES = (() => {
 })();
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
+  // Apple Podcasts links are podcasts.apple.com/.../podcast/..., so check both parts
   const isPodcast = study.pdfUrl.includes('apple.com/') && study.pdfUrl.includes('podcast');
+  const isYouTube = study.pdfUrl.includes('youtu');
 
   return (
     <article className="h-full flex flex-col rounded-3xl bg-gray-900 border border-white/10 p-6 sm:p-8">
@@ -188,6 +197,10 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
           {isPodcast ? (
             <>
               <Headphones size={16} /> Listen on Apple Podcasts
+            </>
+          ) : isYouTube ? (
+            <>
+              <Youtube size={16} /> Watch on YouTube
             </>
           ) : (
             <>
