@@ -164,6 +164,14 @@ const CASE_STUDIES: CaseStudy[] = [
       'Jay Judson explores the supernatural dimension of discipleship — how God moves through signs, wonders, and the power of the Holy Spirit to accelerate disciple-making movements across Asia. A compelling look at what happens when believers step out in faith and trust God for the miraculous in everyday ministry.',
     pdfUrl: 'https://youtu.be/lApddlDhOjs',
   },
+  {
+    category: 'Myanmar Movement',
+    title: 'Myanmar Movement Interview by Dr. Victor Choudhrie',
+    subtitle: 'March 2021',
+    summary:
+      'Dr. Victor Choudhrie interviews Jay Judson about the extraordinary Church Planting Movement unfolding in Myanmar. Dr. Choudhrie, a renowned movement catalyst and author, draws out key insights on how the movement started, how it multiplies, and what lessons it holds for the global church.',
+    pdfUrl: 'https://youtu.be/mOdhzDG2GPw',
+  },
 ];
 
 // Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
