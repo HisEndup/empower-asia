@@ -129,7 +129,11 @@ const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
-const CATEGORIES = ['All', ...Array.from(new Set(CASE_STUDIES.map((study) => study.category)))];
+// Podcast is pinned as the third tab; the rest follow CASE_STUDIES order
+const CATEGORIES = (() => {
+  const rest = Array.from(new Set(CASE_STUDIES.map((study) => study.category))).filter((c) => c !== 'Podcast');
+  return ['All', rest[0], 'Podcast', ...rest.slice(1)];
+})();
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   const isPodcast = study.pdfUrl.includes('apple.com/') && study.pdfUrl.includes('podcast');
