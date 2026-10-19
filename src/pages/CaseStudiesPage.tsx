@@ -44,7 +44,7 @@ const CASE_STUDIES: CaseStudy[] = [
     pdfUrl: '/Case_Study_2.pdf',
   },
   {
-    category: 'Missions Podcast',
+    category: 'Podcast',
     title: 'Jay Judson — Engaging Missions Podcast',
     subtitle: 'Stories and Insights from the Mission Field',
     summary:
@@ -120,7 +120,7 @@ const CASE_STUDIES: CaseStudy[] = [
     pdfUrl: '/Case_Study_9.pdf',
   },
   {
-    category: 'Podcast Episode',
+    category: 'Podcast',
     title: 'Church Planting & Multiplication with Jay Judson',
     subtitle: 'Episode 016 — Engaging Missions Podcast',
     summary:
