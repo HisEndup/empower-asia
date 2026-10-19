@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FileText, Calendar, User, Headphones } from 'lucide-react';
 
 interface CaseStudy {
@@ -128,6 +129,8 @@ const CASE_STUDIES: CaseStudy[] = [
   },
 ];
 
+const CATEGORIES = ['All', ...Array.from(new Set(CASE_STUDIES.map((study) => study.category)))];
+
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   const isPodcast = study.pdfUrl.includes('apple.com/') && study.pdfUrl.includes('podcast');
 
@@ -186,6 +189,12 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 }
 
 export default function CaseStudiesPage() {
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filtered = activeCategory === 'All'
+    ? CASE_STUDIES
+    : CASE_STUDIES.filter((study) => study.category === activeCategory);
+
   return (
     <div className="bg-gray-950 min-h-screen">
       {/* Hero */}
@@ -201,10 +210,29 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
+      {/* Category filters */}
+      <section className="max-w-6xl mx-auto px-6">
+        <div className="flex gap-2 overflow-x-auto pb-2 -mx-6 px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`shrink-0 whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                activeCategory === cat
+                  ? 'bg-white text-gray-950'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Case studies */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6 py-16">
-          {CASE_STUDIES.map((study) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6 pt-8 pb-16">
+          {filtered.map((study) => (
             <CaseStudyCard key={study.title} study={study} />
           ))}
         </div>
