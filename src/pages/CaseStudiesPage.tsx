@@ -1,4 +1,4 @@
-import { FileText, Calendar, User } from 'lucide-react';
+import { FileText, Calendar, User, Headphones } from 'lucide-react';
 
 interface CaseStudy {
   category: string;
@@ -118,9 +118,19 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     pdfUrl: '/Case_Study_9.pdf',
   },
+  {
+    category: 'Podcast Episode',
+    title: 'Church Planting & Multiplication with Jay Judson',
+    subtitle: 'Episode 016 — Engaging Missions Podcast',
+    summary:
+      'Jay Judson joins the Engaging Missions Podcast to discuss church planting and multiplication movements across Asia. Drawing from years of field experience, Jay shares how indigenous leaders are multiplying disciples and house churches in the Buddhist world — and what Western churches can learn from these movements.',
+    pdfUrl: 'https://podcasts.apple.com/us/podcast/em016-church-planting-multiplication-with-jay-judson/id859735709?i=1000493381703',
+  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
+  const isPodcast = study.pdfUrl.includes('apple.com/') && study.pdfUrl.includes('podcast');
+
   return (
     <article className="h-full flex flex-col rounded-3xl bg-gray-900 border border-white/10 p-6 sm:p-8">
       <span className="self-start inline-block bg-blue-500/15 text-blue-300 text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-5">
@@ -160,7 +170,15 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-950 font-semibold rounded-full hover:bg-gray-200 transition-colors"
         >
-          <FileText size={16} /> Read Full PDF
+          {isPodcast ? (
+            <>
+              <Headphones size={16} /> Listen on Apple Podcasts
+            </>
+          ) : (
+            <>
+              <FileText size={16} /> Read Full PDF
+            </>
+          )}
         </a>
       </div>
     </article>
