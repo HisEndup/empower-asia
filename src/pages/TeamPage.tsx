@@ -3,7 +3,7 @@ import NewsletterSignup from '../components/NewsletterSignup';
 
 type TeamMember = {
   name: string;
-  role: string;
+  role?: string;
   bio: string;
   image?: string;
   imagePosition?: string;
@@ -90,6 +90,13 @@ const teamMembers: TeamMember[] = [
     bio: 'Oral Bible Translation Trainer and Mother Tongue Translator for SPV Thai Translation. Five-year missionary to Malaysia and Co-Founder of Sonrise House Church Movement.',
     image: '/Irane_Prathumrat.webp',
   },
+  {
+    name: 'Ying & Grace Kai',
+    bio: 'Ying & Grace the church planters and pastors became trainers and catalysts for Church-Planting Movements. He called his process of making disciples “Training for Trainers” (T4T). “Trainer” conveys the idea of someone who both grows in his loving obedience to Jesus and passes on what he learns to others through witness and training. Ying and Grace continue to train movement leaders across the world. Additional information on T4T can be found at:',
+    website: 'https://www.t4tglobalmissions.org',
+    image: '/Ying_and_Grace_Kai.webp',
+    imagePosition: 'center 60%',
+  },
 ];
 
 function TeamCard({ member }: { member: TeamMember }) {
@@ -112,7 +119,9 @@ function TeamCard({ member }: { member: TeamMember }) {
       </div>
 
       <h2 className="mt-5 text-lg font-bold text-gray-950 leading-snug">{member.name}</h2>
-      <p className="mt-1 text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">{member.role}</p>
+      {member.role && (
+        <p className="mt-1 text-xs sm:text-sm font-semibold text-gray-500 uppercase tracking-wider">{member.role}</p>
+      )}
       <p className="mt-3 text-sm text-gray-600 leading-relaxed">{member.bio}</p>
 
       {(member.email || member.website) && (
@@ -144,7 +153,6 @@ export default function TeamPage() {
           <p className="text-base sm:text-xl text-gray-300 leading-relaxed max-w-2xl">
             Indigenous leaders, translators, church planters, and supporters united around one mission — God's Word for every people.
           </p>
-          <p className="text-gray-500 text-xs mt-3">Tap a card for contact details</p>
         </div>
       </section>
 
