@@ -43,7 +43,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Ying & Grace Kai',
     bio: 'Ying & Grace the church planters and pastors became trainers and catalysts for Church-Planting Movements. He called his process of making disciples “Training for Trainers” (T4T). “Trainer” conveys the idea of someone who both grows in his loving obedience to Jesus and passes on what he learns to others through witness and training. Ying and Grace continue to train movement leaders across the world. Additional information on T4T can be found at:',
-    website: 'https://www.t4tglobalmissions.org',
+    email: 'bbbcpm@gmail.com',
     image: '/Ying_and_Grace_Kai.webp',
     imagePosition: 'center 60%',
   },
