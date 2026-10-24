@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight, MapPin, Phone, Mail, Facebook } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import StoryPage from './pages/StoryPage';
 import ProcessPage from './pages/ProcessPage';
-import BeliefsPage from './pages/BeliefsPage';
+import BeliefPage from './pages/BeliefPage';
 import TranslationsPage from './pages/TranslationsPage';
 import TenStoriesPage from './pages/TenStoriesPage';
 import MovementVideoPage from './pages/MovementVideoPage';
@@ -17,9 +17,9 @@ import B3PrayerPage from './pages/B3PrayerPage';
 import B3StoriesPage from './pages/B3StoriesPage';
 import BridgePage from './pages/BridgePage';
 import ContactPage from './pages/ContactPage';
-import TermsPage from './pages/TermsPage';
-import PrivacyPage from './pages/PrivacyPage';
-import CookiePage from './pages/CookiePage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CookiesPolicyPage from './pages/CookiesPolicyPage';
 import TrainingVideosPage from './pages/TrainingVideosPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 
@@ -35,9 +35,9 @@ export type Page =
   | 'give'
   | 'blog'
   | 'contact'
-  | 'terms'
-  | 'privacy'
-  | 'cookie'
+  | 'privacy-policy'
+  | 'cookies-policy'
+  | 'terms-of-service'
   | 'training-videos'
   | 'case-studies'
   | 'b3-stories';
@@ -54,9 +54,9 @@ export const PAGE_PATHS: Record<Page, string> = {
   give: '/give',
   blog: '/blog',
   contact: '/contact',
-  terms: '/terms',
-  privacy: '/privacy',
-  cookie: '/cookie',
+  'privacy-policy': '/privacy-policy',
+  'cookies-policy': '/cookies-policy',
+  'terms-of-service': '/terms-of-service',
   'training-videos': '/training-videos',
   'case-studies': '/case-studies',
   'b3-stories': '/b3-stories',
@@ -277,7 +277,7 @@ function Footer() {
   return (
     <footer className="bg-gray-950 text-gray-400 pt-12 sm:pt-16 pb-8 sm:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-14">
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
               <img src="/qt=q_95.webp" alt="Empower Asia" className="h-12 w-12 rounded-full object-cover" />
@@ -354,6 +354,26 @@ function Footer() {
           </div>
 
           <div>
+            <h4 className="text-white font-semibold mb-5 text-xs uppercase tracking-wider">Legal</h4>
+            <ul className="space-y-3 text-sm">
+              {(
+                [
+                  ['Privacy Policy', 'privacy-policy'],
+                  ['Cookies Policy', 'cookies-policy'],
+                  ['Terms of Service', 'terms-of-service'],
+                  ['Statement of Beliefs', 'beliefs'],
+                ] as [string, Page][]
+              ).map(([l, p]) => (
+                <li key={l}>
+                  <button onClick={() => go(p)} className="hover:text-white transition-colors text-left">
+                    {l}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <h4 className="text-white font-semibold mb-5 text-xs uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
@@ -377,9 +397,9 @@ function Footer() {
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-600">
           <span>&copy; {new Date().getFullYear()} Empower Asia Bible Translation Movement. All Rights Reserved.</span>
           <div className="flex gap-6 flex-wrap justify-center sm:justify-end">
-            <button onClick={() => go('privacy')} className="hover:text-gray-400 transition-colors">Privacy Policy</button>
-            <button onClick={() => go('terms')} className="hover:text-gray-400 transition-colors">Terms of Service</button>
-            <button onClick={() => go('cookie')} className="hover:text-gray-400 transition-colors">Cookie Policy</button>
+            <button onClick={() => go('privacy-policy')} className="hover:text-gray-400 transition-colors">Privacy Policy</button>
+            <button onClick={() => go('terms-of-service')} className="hover:text-gray-400 transition-colors">Terms of Service</button>
+            <button onClick={() => go('cookies-policy')} className="hover:text-gray-400 transition-colors">Cookie Policy</button>
           </div>
         </div>
       </div>
@@ -423,16 +443,19 @@ export default function App() {
           <Route path="/team" element={<TeamPage />} />
           <Route path="/story" element={<StoryPage />} />
           <Route path="/process" element={<ProcessPage />} />
-          <Route path="/beliefs" element={<BeliefsPage />} />
+          <Route path="/beliefs" element={<BeliefPage />} />
           <Route path="/translations" element={<TranslationsPage />} />
           <Route path="/movement-video" element={<MovementVideoPage />} />
           <Route path="/give" element={<GivePage />} />
           <Route path="/blog" element={<BlogPage onNavigate={onNavigate} />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/cookie" element={<CookiePage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/cookies-policy" element={<CookiesPolicyPage />} />
+          <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+          <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+          <Route path="/cookie" element={<Navigate to="/cookies-policy" replace />} />
+          <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
           <Route path="/training-videos" element={<TrainingVideosPage />} />
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
