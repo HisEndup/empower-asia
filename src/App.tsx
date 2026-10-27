@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight, MapPin, Phone, Mail, Facebook } from 'lucide-react';
 import HomePage from './pages/HomePage';
 import StoryPage from './pages/StoryPage';
@@ -22,45 +22,10 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import CookiesPolicyPage from './pages/CookiesPolicyPage';
 import TrainingVideosPage from './pages/TrainingVideosPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
+import NotFoundPage from './pages/NotFoundPage';
+import { PAGE_PATHS, PAGE_META, applyPageMeta, type Page } from './lib/routes';
 
-export type Page =
-  | 'home'
-  | 'team'
-  | 'story'
-  | 'process'
-  | 'beliefs'
-  | 'translations'
-  | 'ten-stories'
-  | 'movement-video'
-  | 'give'
-  | 'blog'
-  | 'contact'
-  | 'privacy-policy'
-  | 'cookies-policy'
-  | 'terms-of-service'
-  | 'training-videos'
-  | 'case-studies'
-  | 'b3-stories';
-
-export const PAGE_PATHS: Record<Page, string> = {
-  home: '/',
-  team: '/team',
-  story: '/story',
-  process: '/process',
-  beliefs: '/beliefs',
-  translations: '/translations',
-  'ten-stories': '/ten-stories',
-  'movement-video': '/movement-video',
-  give: '/give',
-  blog: '/blog',
-  contact: '/contact',
-  'privacy-policy': '/privacy-policy',
-  'cookies-policy': '/cookies-policy',
-  'terms-of-service': '/terms-of-service',
-  'training-videos': '/training-videos',
-  'case-studies': '/case-studies',
-  'b3-stories': '/b3-stories',
-};
+export { PAGE_PATHS, type Page };
 
 type NavItem =
   | { label: string; page: Page }
@@ -99,7 +64,6 @@ function Navigation({
   menuOpen: boolean;
   setMenuOpen: (v: boolean) => void;
 }) {
-  const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
@@ -117,12 +81,10 @@ function Navigation({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const go = (page: Page) => {
-    navigate(PAGE_PATHS[page]);
+  const closeMenus = () => {
     setOpenDropdown(null);
     setMenuOpen(false);
     setOpenMobileSection(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const toggleDropdown = (label: string) => {
@@ -144,7 +106,7 @@ function Navigation({
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
         {/* Logo */}
-        <button onClick={() => go('home')} className="flex items-center gap-3">
+        <Link to="/" onClick={closeMenus} className="flex items-center gap-3" aria-label="Empower Asia home">
           <img
             src="/qt=q_95.webp"
             alt="Empower Asia"
@@ -154,23 +116,26 @@ function Navigation({
             <span className="text-white text-sm font-bold tracking-tight">Empower Asia</span>
             <span className="text-white/60 text-xs">Bible Translation Movement</span>
           </div>
-        </button>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <div key={link.label} className="relative">
               {'page' in link ? (
-                <button
-                  onClick={() => go(link.page)}
+                <Link
+                  to={PAGE_PATHS[link.page]}
+                  onClick={closeMenus}
                   className="text-sm font-semibold text-white hover:text-gray-300 transition-colors py-2"
                 >
                   {link.label}
-                </button>
+                </Link>
               ) : (
                 <>
                   <button
                     onClick={() => toggleDropdown(link.label)}
+                    aria-expanded={openDropdown === link.label}
+                    aria-haspopup="true"
                     className="flex items-center gap-1 text-sm font-semibold text-white hover:text-gray-300 transition-colors py-2"
                   >
                     {link.label}
@@ -179,13 +144,14 @@ function Navigation({
                   {openDropdown === link.label && (
                     <div className="absolute top-full left-0 w-56 bg-white shadow-2xl rounded-2xl overflow-hidden border border-gray-100 py-2">
                       {link.children.map((child) => (
-                        <button
+                        <Link
                           key={child.label}
-                          onClick={() => go(child.page)}
-                          className="w-full text-left px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-950 transition-colors font-medium"
+                          to={PAGE_PATHS[child.page]}
+                          onClick={closeMenus}
+                          className="block w-full text-left px-5 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-950 transition-colors font-medium"
                         >
                           {child.label}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -193,12 +159,13 @@ function Navigation({
               )}
             </div>
           ))}
-          <button
-            onClick={() => go('give')}
+          <Link
+            to={PAGE_PATHS.give}
+            onClick={closeMenus}
             className="px-5 py-2.5 bg-white text-gray-950 text-sm font-bold rounded-full hover:bg-gray-100 transition-colors"
           >
             Give Now
-          </button>
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -206,6 +173,7 @@ function Navigation({
           className="lg:hidden text-white p-1"
           onClick={() => { setMenuOpen(!menuOpen); setOpenMobileSection(null); }}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -217,16 +185,18 @@ function Navigation({
           {NAV_LINKS.map((link) => (
             <div key={link.label}>
               {'page' in link ? (
-                <button
-                  onClick={() => go(link.page)}
-                  className="w-full text-left px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 transition-colors"
+                <Link
+                  to={PAGE_PATHS[link.page]}
+                  onClick={closeMenus}
+                  className="block w-full text-left px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 transition-colors"
                 >
                   {link.label}
-                </button>
+                </Link>
               ) : (
                 <>
                   <button
                     onClick={() => toggleMobileSection(link.label)}
+                    aria-expanded={openMobileSection === link.label}
                     className="w-full flex items-center justify-between px-6 py-4 text-white font-semibold text-sm hover:bg-white/5 transition-colors"
                   >
                     {link.label}
@@ -238,13 +208,14 @@ function Navigation({
                   {openMobileSection === link.label && (
                     <div className="bg-white/5 border-t border-white/10">
                       {link.children.map((child) => (
-                        <button
+                        <Link
                           key={child.label}
-                          onClick={() => go(child.page)}
-                          className="w-full text-left px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors border-l-2 border-white/10 ml-4"
+                          to={PAGE_PATHS[child.page]}
+                          onClick={closeMenus}
+                          className="block w-full text-left px-6 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors border-l-2 border-white/10 ml-4"
                         >
                           {child.label}
-                        </button>
+                        </Link>
                       ))}
                     </div>
                   )}
@@ -253,12 +224,13 @@ function Navigation({
             </div>
           ))}
           <div className="px-6 py-4">
-            <button
-              onClick={() => go('give')}
-              className="w-full py-3 bg-white text-gray-950 font-bold rounded-full text-sm hover:bg-gray-100 transition-colors"
+            <Link
+              to={PAGE_PATHS.give}
+              onClick={closeMenus}
+              className="block text-center w-full py-3 bg-white text-gray-950 font-bold rounded-full text-sm hover:bg-gray-100 transition-colors"
             >
               Give Now
-            </button>
+            </Link>
           </div>
         </div>
       )}
@@ -267,13 +239,6 @@ function Navigation({
 }
 
 function Footer() {
-  const navigate = useNavigate();
-
-  const go = (page: Page) => {
-    navigate(PAGE_PATHS[page]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="bg-gray-950 text-gray-400 pt-12 sm:pt-16 pb-8 sm:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -313,9 +278,9 @@ function Footer() {
                 ] as [string, Page][]
               ).map(([l, p]) => (
                 <li key={l}>
-                  <button onClick={() => go(p)} className="hover:text-white transition-colors text-left">
+                  <Link to={PAGE_PATHS[p]} className="hover:text-white transition-colors">
                     {l}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -335,15 +300,15 @@ function Footer() {
                 ] as [string, Page][]
               ).map(([l, p]) => (
                 <li key={l}>
-                  <button onClick={() => go(p)} className="hover:text-white transition-colors text-left">
+                  <Link to={PAGE_PATHS[p]} className="hover:text-white transition-colors">
                     {l}
-                  </button>
+                  </Link>
                 </li>
               ))}
               <li>
-                <button onClick={() => { navigate('/b3-prayer-movement'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-white transition-colors text-left">
+                <Link to="/b3-prayer-movement" className="hover:text-white transition-colors">
                   Pray
-                </button>
+                </Link>
               </li>
               <li>
                 <a href="http://www.dmsmm.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
@@ -365,9 +330,9 @@ function Footer() {
                 ] as [string, Page][]
               ).map(([l, p]) => (
                 <li key={l}>
-                  <button onClick={() => go(p)} className="hover:text-white transition-colors text-left">
+                  <Link to={PAGE_PATHS[p]} className="hover:text-white transition-colors">
                     {l}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -397,9 +362,9 @@ function Footer() {
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-600">
           <span>&copy; {new Date().getFullYear()} Empower Asia Bible Translation Movement. All Rights Reserved.</span>
           <div className="flex gap-6 flex-wrap justify-center sm:justify-end">
-            <button onClick={() => go('privacy-policy')} className="hover:text-gray-400 transition-colors">Privacy Policy</button>
-            <button onClick={() => go('terms-of-service')} className="hover:text-gray-400 transition-colors">Terms of Service</button>
-            <button onClick={() => go('cookies-policy')} className="hover:text-gray-400 transition-colors">Cookie Policy</button>
+            <Link to={PAGE_PATHS['privacy-policy']} className="hover:text-gray-400 transition-colors">Privacy Policy</Link>
+            <Link to={PAGE_PATHS['terms-of-service']} className="hover:text-gray-400 transition-colors">Terms of Service</Link>
+            <Link to={PAGE_PATHS['cookies-policy']} className="hover:text-gray-400 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
@@ -424,6 +389,13 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [location.pathname]);
 
+  // Page title, description and canonical URL. Blog posts and the 404 page set their own.
+  useEffect(() => {
+    const path = location.pathname.replace(/(.)\/$/, '$1');
+    const meta = PAGE_META[path];
+    if (meta) applyPageMeta(path, meta.title, meta.description);
+  }, [location.pathname]);
+
   const onNavigate = (page: Page) => {
     navigate(PAGE_PATHS[page]);
     setMenuOpen(false);
@@ -439,7 +411,7 @@ export default function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<HomePage onNavigate={onNavigate} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/story" element={<StoryPage />} />
           <Route path="/process" element={<ProcessPage />} />
@@ -461,7 +433,7 @@ export default function App() {
           <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
           <Route path="/b3-stories" element={<B3StoriesPage />} />
           <Route path="/b3-stories/bridges/:slug" element={<BridgePage />} />
-          <Route path="*" element={<HomePage onNavigate={onNavigate} />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 

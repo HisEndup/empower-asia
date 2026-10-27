@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
-import type { Page } from '../App';
+import { PAGE_PATHS, type Page } from '../lib/routes';
 
 const STATS = [
   { value: '47', label: 'Bible Translations', sub: 'Started in 3 years across 5 countries' },
@@ -37,7 +38,7 @@ const PROCESS_STEPS = [
   { n: '04', title: 'Multiply', desc: 'Church leaders choose the next language and restart the cycle.' },
 ];
 
-export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void }) {
+export default function HomePage() {
   return (
     <div className="bg-white">
 
@@ -64,24 +65,24 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
             Empowering indigenous translators to bring Scripture to every people across the Buddhist world of Asia.
           </p>
           <div className="flex flex-col gap-3 w-full max-w-xs sm:max-w-none sm:flex-row sm:gap-4 sm:justify-center">
-            <button
-              onClick={() => onNavigate('story')}
+            <Link
+              to={PAGE_PATHS.story}
               className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-gray-950 font-bold rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-lg text-sm sm:text-base"
             >
               Learn Our Story <ArrowRight size={16} />
-            </button>
-            <button
-              onClick={() => onNavigate('movement-video')}
+            </Link>
+            <Link
+              to={PAGE_PATHS['movement-video']}
               className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-white/15 backdrop-blur border border-white/40 text-white font-semibold rounded-full hover:bg-white/25 transition-all text-sm sm:text-base"
             >
               Watch the Video
-            </button>
+            </Link>
           </div>
         </div>
 
         {/* Bottom-left video badge — hidden on mobile to avoid overlap */}
-        <button
-          onClick={() => onNavigate('movement-video')}
+        <Link
+          to={PAGE_PATHS['movement-video']}
           className="hidden sm:flex absolute bottom-8 left-6 items-center gap-3 bg-gray-950/80 backdrop-blur-sm text-white rounded-2xl px-4 py-3 hover:bg-gray-900 transition-colors z-10"
         >
           <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0">
@@ -93,18 +94,18 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
             <div className="text-xs font-bold">Empower Asia</div>
             <div className="text-xs text-white/70">Movement Video</div>
           </div>
-        </button>
+        </Link>
       </section>
 
-      {/* ── 3 IMAGE CARDS (YWAM-style) ── */}
+      {/* ── 3 IMAGE CARDS ── */}
       <section className="py-8 sm:py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
             {CARDS.map((card) => (
-              <button
+              <Link
                 key={card.title}
-                onClick={() => onNavigate(card.page)}
-                className="group relative rounded-2xl sm:rounded-3xl overflow-hidden h-56 sm:h-72 md:h-[400px] text-left focus:outline-none"
+                to={PAGE_PATHS[card.page]}
+                className="group relative block rounded-2xl sm:rounded-3xl overflow-hidden h-56 sm:h-72 md:h-[400px] text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-gray-950/40"
               >
                 <img
                   src={card.img}
@@ -119,7 +120,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
                     Learn more <ArrowRight size={13} />
                   </div>
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -150,12 +151,12 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
           <p className="text-gray-500 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10">
             Hundreds of people groups in Myanmar, Thailand, China, and beyond still lack God's Word in their heart language. Empower Asia is changing that — one translation at a time, led by indigenous believers.
           </p>
-          <button
-            onClick={() => onNavigate('process')}
+          <Link
+            to={PAGE_PATHS.process}
             className="inline-flex items-center gap-2 text-gray-900 font-semibold text-base border-b-2 border-gray-900 pb-0.5 hover:border-gray-500 hover:text-gray-500 transition-colors"
           >
             See Our 8-Step Process <ChevronRight size={16} />
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -188,14 +189,14 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
                 Permission to translate.<br />Permission to reach.
               </h2>
               <p className="text-gray-500 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                Founded in 2022, Empower Asia identifies, equips, and supports indigenous Bible translators — building on the movement Major Tun Kyaw Oo and Jay Pratt began in 2004.
+                Founded in 2022, Empower Asia identifies, equips, and supports indigenous Bible translators — building on the movement Major Tun Kyaw Oo and Jay Judson began in 2004.
               </p>
-              <button
-                onClick={() => onNavigate('story')}
+              <Link
+                to={PAGE_PATHS.story}
                 className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gray-950 text-white font-semibold rounded-full hover:bg-black transition-colors"
               >
                 Read Our Story <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {PROCESS_STEPS.map((step) => (
@@ -226,12 +227,12 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
           <p className="text-gray-300 text-sm sm:text-lg max-w-xl mb-6 sm:mb-8 leading-relaxed px-2">
             Your support enables Buddhist Background Believers to communicate the Good News of Christ to the entire Buddhist world.
           </p>
-          <a
-            href="mailto:shwemyodaw@protonmail.com"
+          <Link
+            to={PAGE_PATHS.give}
             className="inline-flex items-center gap-2 px-9 py-4 bg-white text-gray-950 font-bold rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-xl"
           >
             Partner With Us <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -247,7 +248,7 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
               />
               <div className="absolute -bottom-3 -right-3 sm:-bottom-6 sm:-right-6 bg-gray-950 text-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl max-w-[80px] sm:max-w-none">
                 <div className="text-xl sm:text-3xl font-black">75</div>
-                <div className="text-xs font-medium text-gray-400 mt-1">Languages<br />Translated</div>
+                <div className="text-xs font-medium text-gray-400 mt-1">Picture<br />Bibles</div>
               </div>
             </div>
             <div className="order-1 lg:order-2">
@@ -262,18 +263,20 @@ export default function HomePage({ onNavigate }: { onNavigate: (p: Page) => void
                 Available in multiple languages and designed for easy distribution — shared digitally or in print — making it accessible across different regions and people groups.
               </p>
               <div className="flex flex-wrap gap-3 sm:gap-4">
-                <button
-                  onClick={() => window.open('https://www.b3stories.com', '_blank')}
+                <a
+                  href="https://www.b3stories.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-5 sm:px-7 py-3 sm:py-3.5 bg-gray-950 text-white font-semibold rounded-full hover:bg-black transition-colors text-sm sm:text-base"
                 >
                   Explore the Stories
-                </button>
-                <button
-                  onClick={() => window.open('https://www.b3stories.com', '_blank')}
+                </a>
+                <Link
+                  to={PAGE_PATHS.translations}
                   className="px-5 sm:px-7 py-3 sm:py-3.5 border-2 border-gray-200 text-gray-700 font-semibold rounded-full hover:border-gray-400 transition-colors text-sm sm:text-base"
                 >
                   All Translations
-                </button>
+                </Link>
               </div>
             </div>
           </div>

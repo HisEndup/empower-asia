@@ -12,16 +12,16 @@ const CATEGORIES = ['All', 'Training & Teaching', 'Sermons & Talks', 'Movement U
 const VIDEOS: Video[] = [
   // Training & Teaching
   { id: 'EcHpuU6h5iQ', title: 'Barriers and Bridges of Buddhist: OT & NT Influence on Southern & Northern Buddhism', category: 'Training & Teaching' },
-  { id: 'vgIkJXq9oJY', title: '(English) Barriers and Bridges according to BBB Movement — By Jay Pratt', category: 'Training & Teaching' },
-  { id: '17JUoP7PV9o', title: 'Barriers and Bridges according to BBB Movement — By Jay Pratt', category: 'Training & Teaching' },
-  { id: '33qPtIcgZ0I', title: '(Chinese) Barriers and Bridges according to BBB Movement — By Jay Pratt', category: 'Training & Teaching' },
+  { id: 'vgIkJXq9oJY', title: '(English) Barriers and Bridges according to BBB Movement — By Jay Judson', category: 'Training & Teaching' },
+  { id: '17JUoP7PV9o', title: 'Barriers and Bridges according to BBB Movement — By Jay Judson', category: 'Training & Teaching' },
+  { id: '33qPtIcgZ0I', title: '(Chinese) Barriers and Bridges according to BBB Movement — By Jay Judson', category: 'Training & Teaching' },
   { id: 'vZQBtQlsAxA', title: 'The 8 Commands of Jesus Christ', category: 'Training & Teaching' },
   { id: 'f4r38eXBPIQ', title: 'The 8 Commands of Jesus Christ (Session 2)', category: 'Training & Teaching' },
   { id: 'jlkHfV0h3Y8', title: 'Finding Persons of Peace', category: 'Training & Teaching' },
   { id: 'vZcAe_Nr9uQ', title: 'Providing Just Obey Jesus Training — Back to Jerusalem Movement Leaders', category: 'Training & Teaching' },
   { id: 'eBZezc44Yd8', title: 'Jay Shares Jesus 10-10-10 Strategy with Pst. Peter Xu\'s B2J Movement Leaders', category: 'Training & Teaching' },
   // Sermons & Talks
-  { id: 'iUIYbYRblA0', title: 'Special Guest Jay Pratt', category: 'Sermons & Talks' },
+  { id: 'iUIYbYRblA0', title: 'Special Guest Jay Judson', category: 'Sermons & Talks' },
   { id: 'LpI7un7dLgc', title: 'Great Commission', category: 'Sermons & Talks' },
   { id: 'hONhsJLFU8I', title: 'Jay Shares at Lifepointe Church Brownsville', category: 'Sermons & Talks' },
   { id: '1PsyceZCcxQ', title: 'Jay Shares with Grace Church', category: 'Sermons & Talks' },

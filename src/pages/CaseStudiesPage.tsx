@@ -183,7 +183,7 @@ const CASE_STUDIES: CaseStudy[] = [
   {
     category: 'Academic Paper',
     title: 'How Contextualization and Indigenization Are Occurring in the Midst of a Church Planting Movement Among a Theravada Buddhist People',
-    author: 'Jay Pratt — Malaysia Baptist Theological Seminary, December 2006',
+    author: 'Jay Judson — Malaysia Baptist Theological Seminary, December 2006',
     summary:
       'A seminal academic paper presented to Dr. John Mark Terry examining how contextualization and indigenization are happening inside a live Church Planting Movement among Theravada Buddhist peoples in Myanmar. Since February 2004, over 100 churches have multiplied through this movement, using indigenous terms, ceremonies, and cultural bridges — including the use of "Nibbana" for heaven and traditional music — to present the Gospel in a way that resonates deeply with the Buddhist worldview.',
     stats: [

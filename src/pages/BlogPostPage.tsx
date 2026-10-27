@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { PortableText } from '@portabletext/react';
 import { client, urlFor, type SanityPost } from '../lib/sanityClient';
 import NewsletterSignup from '../components/NewsletterSignup';
+import { applyPageMeta } from '../lib/routes';
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   _id, title, slug, author, publishedAt, mainImage, excerpt, body, category
@@ -70,6 +71,10 @@ export default function BlogPostPage() {
       .catch(() => setNotFound(true))
       .finally(() => setLoading(false));
   }, [slug]);
+
+  useEffect(() => {
+    if (post) applyPageMeta(`/blog/${slug}`, post.title, post.excerpt || undefined);
+  }, [post, slug]);
 
   if (loading) {
     return <div className="pt-40 pb-20 text-center text-gray-400">Loading...</div>;

@@ -34,7 +34,7 @@ const PARTNERSHIPS = [
 ];
 
 const MILESTONES = [
-  { year: '2004', event: 'Major TKO and Jay Pratt translate 10 Jesus Stories into Burmese and Rakhine; distributed to 39 newly formed house churches.' },
+  { year: '2004', event: 'Major TKO and Jay Judson translate 10 Jesus Stories into Burmese and Rakhine; distributed to 39 newly formed house churches.' },
   { year: '2006', event: 'First indigenous Burmese Bible translation project (Sama Pitaka Version) begins under Major TKO.' },
   { year: '2007', event: 'Major TKO establishes dedicated translation team producing a meaning-based translation of the Gospels and Acts for DMS house churches.' },
   { year: '2012', event: '10 Jesus Stories Picture Bible translated into 40 languages of the Buddhist world.' },
@@ -74,7 +74,7 @@ export default function StoryPage() {
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Major Tun Kyaw Oo (1936–2022)</h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                In 2004, Major Tun Kyaw Oo (TKO) and Jay Pratt translated ten Jesus Stories into Burmese and Rakhine, distributing them to thirty-nine newly established house churches. This simple act of obedience sparked what would become one of the largest church movements among Buddhist peoples in history.
+                In 2004, Major Tun Kyaw Oo (TKO) and Jay Judson translated ten Jesus Stories into Burmese and Rakhine, distributing them to thirty-nine newly established house churches. This simple act of obedience sparked what would become one of the largest church movements among Buddhist peoples in history.
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
                 By 2007, Major TKO had established a dedicated translation team producing a meaning-based translation of the Gospels and Acts for DMS house churches — which eventually grew to over 41,932 congregations. The "Sama Pitaka Version (SPV)" has been translated into over 40 languages of the Buddhist world.

@@ -1,4 +1,5 @@
-import { Mail, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Mail, ExternalLink, Heart } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 
 type TeamMember = {
@@ -9,15 +10,17 @@ type TeamMember = {
   imagePosition?: string;
   email?: string;
   website?: string;
+  giveButton?: boolean;
 };
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Jay & Anna Pratt',
+    name: 'Jay & Anna Judson',
     role: 'CEO / Founder',
     bio: 'Jay was trained by Dr. George Patterson, widely acknowledged as the father of the modern Church Planting Movement. He has devoted over twenty years to ministry in Burma and is based in Thailand, where he coaches leaders of ten house church movements serving Buddhist populations.',
     email: 'prattjay@gmail.com',
     image: '/Jay_and_Anna_.webp',
+    giveButton: true,
   },
   {
     name: 'Bradley Jones',
@@ -46,6 +49,7 @@ const teamMembers: TeamMember[] = [
     email: 'bbbcpm@gmail.com',
     image: '/Ying_and_Grace_Kai.webp',
     imagePosition: 'center 60%',
+    giveButton: true,
   },
   {
     name: 'Ni Ni',
@@ -137,6 +141,15 @@ function TeamCard({ member }: { member: TeamMember }) {
             </a>
           )}
         </div>
+      )}
+
+      {member.giveButton && (
+        <Link
+          to="/give"
+          className="mt-5 self-start inline-flex items-center gap-2 px-5 py-2.5 bg-gray-950 text-white text-sm font-semibold rounded-full hover:bg-black transition-colors"
+        >
+          <Heart size={14} className="shrink-0" /> Give Now
+        </Link>
       )}
     </article>
   );

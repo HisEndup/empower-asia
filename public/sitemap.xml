@@ -1,94 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://empowerasia.org/</loc>
+    <loc>https://www.empowerasia.org/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#team</loc>
+    <loc>https://www.empowerasia.org/team</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#story</loc>
+    <loc>https://www.empowerasia.org/story</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#process</loc>
+    <loc>https://www.empowerasia.org/process</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#beliefs</loc>
+    <loc>https://www.empowerasia.org/beliefs</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#translations</loc>
+    <loc>https://www.empowerasia.org/translations</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#ten-stories</loc>
+    <loc>https://www.empowerasia.org/movement-video</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#movement-video</loc>
+    <loc>https://www.empowerasia.org/training-videos</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#training-videos</loc>
+    <loc>https://www.empowerasia.org/case-studies</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#give</loc>
+    <loc>https://www.empowerasia.org/b3-stories</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#blog</loc>
+    <loc>https://www.empowerasia.org/b3-prayer-movement</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.empowerasia.org/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#contact</loc>
+    <loc>https://www.empowerasia.org/give</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.empowerasia.org/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#privacy</loc>
+    <loc>https://www.empowerasia.org/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#terms</loc>
+    <loc>https://www.empowerasia.org/cookies-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
   <url>
-    <loc>https://empowerasia.org/#cookie</loc>
+    <loc>https://www.empowerasia.org/terms-of-service</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
 </urlset>
