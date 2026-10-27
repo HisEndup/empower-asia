@@ -78,7 +78,7 @@ const teamMembers: TeamMember[] = [
     image: '/Pastor_Xu.webp',
   },
   {
-    name: 'Charles Rumkup',
+    name: 'Charles',
     role: 'Bhutanese House Church Movement',
     bio: 'Catalyst of the Bhutanese movement, actively translating the Bible into five languages in Bhutan and surrounding countries.',
   },
