@@ -15,7 +15,7 @@ type TeamMember = {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Jay & Anna Judson',
+    name: 'Jay Judson & Anna',
     role: 'CEO / Founder',
     bio: 'Jay was trained by Dr. George Patterson, widely acknowledged as the father of the modern Church Planting Movement. He has devoted over twenty years to ministry in Burma and is based in Thailand, where he coaches leaders of ten house church movements serving Buddhist populations.',
     email: 'prattjay@gmail.com',
@@ -45,7 +45,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Ying & Grace Kai',
-    bio: 'Ying & Grace the church planters and pastors became trainers and catalysts for Church-Planting Movements. He called his process of making disciples “Training for Trainers” (T4T). “Trainer” conveys the idea of someone who both grows in his loving obedience to Jesus and passes on what he learns to others through witness and training. Ying and Grace continue to train movement leaders across the world. Additional information on T4T can be found at:',
+    bio: 'Ying & Grace the church planters and pastors became trainers and catalysts for Church-Planting Movements. He called his process of making disciples “Training for Trainers” (T4T). “Trainer” conveys the idea of someone who both grows in his loving obedience to Jesus and passes on what he learns to others through witness and training. Ying and Grace continue to train movement leaders across the world.',
     email: 'bbbcpm@gmail.com',
     image: '/Ying_and_Grace_Kai.webp',
     imagePosition: 'center 60%',
