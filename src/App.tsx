@@ -23,6 +23,7 @@ import CookiesPolicyPage from './pages/CookiesPolicyPage';
 import TrainingVideosPage from './pages/TrainingVideosPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import NotFoundPage from './pages/NotFoundPage';
+import B3TrainingPage from './pages/B3TrainingPage';
 import { PAGE_PATHS, PAGE_META, applyPageMeta, type Page } from './lib/routes';
 
 export { PAGE_PATHS, type Page };
@@ -48,6 +49,7 @@ const NAV_LINKS: NavItem[] = [
     label: 'Resources',
     children: [
       { label: 'B3 Stories', page: 'b3-stories' },
+      { label: 'B3 Training', page: 'b3-training' },
       { label: 'Movement Video', page: 'movement-video' },
       { label: 'Training Videos & Sermons', page: 'training-videos' },
       { label: 'Case Studies', page: 'case-studies' },
@@ -292,6 +294,7 @@ function Footer() {
               {(
                 [
                   ['Bible Translations', 'translations'],
+                  ['B3 Training', 'b3-training'],
                   ['Movement Video', 'movement-video'],
                   ['Training Videos & Sermons', 'training-videos'],
                   ['Case Studies', 'case-studies'],
@@ -432,6 +435,7 @@ export default function App() {
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
           <Route path="/b3-stories" element={<B3StoriesPage />} />
+          <Route path="/b3-training" element={<B3TrainingPage />} />
           <Route path="/b3-stories/bridges/:slug" element={<BridgePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

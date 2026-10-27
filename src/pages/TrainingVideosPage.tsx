@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Play, Youtube } from 'lucide-react';
+import VideoCard from '../components/VideoCard';
 
 interface Video {
   id: string;
@@ -48,57 +49,6 @@ const VIDEOS: Video[] = [
 ];
 
 const FEATURED_ID = 'iUIYbYRblA0';
-
-function VideoCard({ video }: { video: Video }) {
-  const [playing, setPlaying] = useState(false);
-  const thumb = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-
-  return (
-    <div className="group rounded-2xl overflow-hidden bg-gray-900 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 flex flex-col">
-      <div className="relative aspect-video bg-black">
-        {playing ? (
-          <iframe
-            src={`https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`}
-            title={video.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          />
-        ) : (
-          <button
-            onClick={() => setPlaying(true)}
-            className="relative w-full h-full block focus:outline-none"
-            aria-label={`Play ${video.title}`}
-          >
-            <img
-              src={thumb}
-              alt={video.title}
-              className="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-              <div className="w-14 h-14 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all duration-200 flex items-center justify-center shadow-xl">
-                <Play size={22} className="ml-1 fill-gray-900 text-gray-900" />
-              </div>
-            </div>
-          </button>
-        )}
-      </div>
-      <div className="p-4 flex flex-col flex-1">
-        <span className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">{video.category}</span>
-        <h3 className="text-white text-sm font-semibold leading-snug line-clamp-2 flex-1">{video.title}</h3>
-        {!playing && (
-          <button
-            onClick={() => setPlaying(true)}
-            className="mt-3 text-xs text-gray-400 hover:text-white transition-colors text-left"
-          >
-            Watch now &rarr;
-          </button>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export default function TrainingVideosPage() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -197,7 +147,7 @@ export default function TrainingVideosPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filtered.map((video) => (
-            <VideoCard key={video.id} video={video} />
+            <VideoCard key={video.id} id={video.id} title={video.title} label={video.category} />
           ))}
         </div>
 
