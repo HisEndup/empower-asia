@@ -61,6 +61,8 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Dr. Charles Pratt',
     role: 'Advisory Board',
+    image: '/Charles_Pratt.webp',
+    imagePosition: 'center 20%',
     bio: 'Dr. Charles Pratt has served as a pastor, evangelist and leader of churches in Tennessee and Louisiana for the past 48 years. Before entering the ministry Charles and wife Linda, led several successful businesses and completed Theological training at New Orleans Baptist Seminary and Luther Rice Seminary in Florida. Dr. Pratt was one of the first Southern Baptist pastors to start taking laymen overseas at the beginning of the short-term missions movement. Dr. Pratt is a Director of Missions for the Fayette Baptist Association and Director of Cross Partners Ministry. On numerous short-term trips, his teams saw hundreds of thousands of Filipinos, Africans, Latinos and Americans come to Christ.',
   },
   {
