@@ -44,7 +44,6 @@ const NAV_LINKS: NavItem[] = [
     ],
   },
   { label: 'Bible Translations', page: 'translations' },
-  { label: 'Blog', page: 'blog' },
   { label: 'Contact', page: 'contact' },
   {
     label: 'Resources',
@@ -54,6 +53,7 @@ const NAV_LINKS: NavItem[] = [
       { label: 'Movement Video', page: 'movement-video' },
       { label: 'Training Videos & Sermons', page: 'training-videos' },
       { label: 'Case Studies', page: 'case-studies' },
+      { label: 'Blog', page: 'blog' },
     ],
   },
 ];
