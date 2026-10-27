@@ -24,6 +24,7 @@ import TrainingVideosPage from './pages/TrainingVideosPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import NotFoundPage from './pages/NotFoundPage';
 import B3TrainingPage from './pages/B3TrainingPage';
+import B3LessonPage from './pages/B3LessonPage';
 import { PAGE_PATHS, PAGE_META, applyPageMeta, type Page } from './lib/routes';
 
 export { PAGE_PATHS, type Page };
@@ -436,6 +437,7 @@ export default function App() {
           <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
           <Route path="/b3-stories" element={<B3StoriesPage />} />
           <Route path="/b3-training" element={<B3TrainingPage />} />
+          <Route path="/b3-training/lesson/:n" element={<B3LessonPage />} />
           <Route path="/b3-stories/bridges/:slug" element={<BridgePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
