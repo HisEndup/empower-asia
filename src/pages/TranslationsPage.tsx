@@ -1,3 +1,4 @@
+import { BookOpen, Headphones } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 
 type Translation = {
@@ -104,30 +105,37 @@ export default function TranslationsPage() {
 
           <div className="grid sm:grid-cols-2 gap-4">
             {MYANMAR_TRANSLATIONS.map((t) => (
-              <div key={t.name} className="bg-white rounded-lg p-4 border border-gray-200 flex items-center gap-3">
+              <div
+                key={t.name}
+                className="bg-white rounded-xl px-5 py-4 border border-gray-200 shadow-sm hover:shadow-md hover:border-amber-200 transition flex items-center gap-3"
+              >
                 <div className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
-                <span className="text-gray-700 flex-1">{t.name}</span>
-                {t.versionId && (
-                  <div className="flex items-center gap-3 text-sm font-semibold shrink-0">
+                <span className="font-semibold text-gray-900 flex-1">{t.name}</span>
+                {t.versionId ? (
+                  <div className="flex items-center gap-2 shrink-0">
                     <a
                       href={`https://www.bible.com/bible/${t.versionId}/LUK.1.${t.abbr}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-amber-600 hover:underline"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-amber-500 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-600 transition"
                       aria-label={`Read ${t.name} on YouVersion`}
                     >
+                      <BookOpen className="w-3.5 h-3.5" />
                       Read
                     </a>
                     <a
                       href={`https://www.bible.com/audio-bible-app-versions/${t.versionId}-${t.audioSlug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-amber-600 hover:underline"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-amber-500 px-3 py-1.5 text-xs font-semibold text-amber-700 hover:bg-amber-50 transition"
                       aria-label={`Listen to ${t.name} on YouVersion`}
                     >
+                      <Headphones className="w-3.5 h-3.5" />
                       Listen
                     </a>
                   </div>
+                ) : (
+                  <span className="text-xs font-medium text-gray-400 uppercase tracking-wide shrink-0">Coming soon</span>
                 )}
               </div>
             ))}
