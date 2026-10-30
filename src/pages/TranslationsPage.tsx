@@ -1,34 +1,42 @@
 import NewsletterSignup from '../components/NewsletterSignup';
 
-const MYANMAR_TRANSLATIONS = [
-  'TPV-RV (Thamma Pitakadaw)',
-  'Cumtu/Sumtu (Chin)',
-  'Ekai (Chin)',
-  'Songlai (Chin)',
-  'Laitu (Chin)',
-  'Danu',
-  'Dannau',
-  'Dawei',
-  'Intha',
-  'Kadu',
-  'Kanan',
-  'Geko Karen',
-  'Paku Karen',
-  'Mobwa Karen',
-  'Khun',
-  'Lahta',
-  'Marmagyi',
-  'Musselmani Burmese',
-  'Akyaung Ari (Naga)',
-  'Northern-Rakhine',
-  'Riang Lai',
-  'Rohingya',
-  'Samtao',
-  'Shwe Palaung',
-  'Southern-Rakhine',
-  'Taungyo',
-  'Thet',
-  'TaiLaing',
+type Translation = {
+  name: string;
+  // Bible.com (YouVersion) version details; omitted when not yet published there
+  versionId?: number;
+  abbr?: string;
+  audioSlug?: string;
+};
+
+const MYANMAR_TRANSLATIONS: Translation[] = [
+  { name: 'TPV-RV (Thamma Pitakadaw)', versionId: 4179, abbr: 'TPV-RV', audioSlug: 'tpv-rv-tpv-rv-(thamma-pitakadaw)' },
+  { name: 'Cumtu/Sumtu (Chin)', versionId: 4159, abbr: 'CTPV-RV', audioSlug: 'ctpv-rv-chin-cumtu-(sumtu)' },
+  { name: 'Ekai (Chin)', versionId: 4155, abbr: 'CTPV-RV', audioSlug: 'ctpv-rv-chin-ekai' },
+  { name: 'Songlai (Chin)', versionId: 4158, abbr: 'CTPV-RV', audioSlug: 'ctpv-rv-chin-songlai' },
+  { name: 'Laitu (Chin)', versionId: 4157, abbr: 'CTPV-RV', audioSlug: 'ctpv-rv-chin-laitu' },
+  { name: 'Danu' },
+  { name: 'Dannau', versionId: 4160, abbr: 'DTPV-RV', audioSlug: 'dtpv-rv-dannau' },
+  { name: 'Dawei' },
+  { name: 'Intha' },
+  { name: 'Kadu', versionId: 4177, abbr: 'KTPV-RV', audioSlug: 'ktpv-rv-kadu' },
+  { name: 'Kanan', versionId: 4178, abbr: 'KTPV-RV', audioSlug: 'ktpv-rv-kanan' },
+  { name: 'Geko Karen', versionId: 4161, abbr: 'KTPV-RV', audioSlug: 'ktpv-rv-karen,-geko' },
+  { name: 'Paku Karen', versionId: 4163, abbr: 'KTPV-RV', audioSlug: 'ktpv-rv-karen,-paku' },
+  { name: 'Mobwa Karen', versionId: 4162, abbr: 'KTPV-RV', audioSlug: 'ktpv-rv-karen,-mobwa' },
+  { name: 'Khun', versionId: 4164, abbr: 'KTPV-RV', audioSlug: 'ktpv-rv-khun' },
+  { name: 'Lahta', versionId: 4165, abbr: 'LTPV-RV', audioSlug: 'ltpv-rv-lahta' },
+  { name: 'Marmagyi', versionId: 4171, abbr: 'MTPV-RV', audioSlug: 'mtpv-rv-marmagyi' },
+  { name: 'Musselmani Burmese', versionId: 4166, abbr: 'MTPV-RV', audioSlug: 'mtpv-rv-musselmani-burmese' },
+  { name: 'Akyaung Ari (Naga)', versionId: 4167, abbr: 'NTPV-RV', audioSlug: 'ntpv-rv-naga-akyaung-ari' },
+  { name: 'Northern-Rakhine', versionId: 4170, abbr: 'NTPV-RV', audioSlug: 'ntpv-rv-northern-rakhine' },
+  { name: 'Riang Lai', versionId: 4176, abbr: 'RTPV-RV', audioSlug: 'rtpv-rv-riang-lai' },
+  { name: 'Rohingya', versionId: 4169, abbr: 'TRPV-RV', audioSlug: 'trpv-rv-rohingya' },
+  { name: 'Samtao', versionId: 4172, abbr: 'STPV-RV', audioSlug: 'stpv-rv-samtao' },
+  { name: 'Shwe Palaung', versionId: 4168, abbr: 'STPV-RV', audioSlug: 'stpv-rv-shwe-palaung' },
+  { name: 'Southern-Rakhine', versionId: 4175, abbr: 'STPV-RV', audioSlug: 'stpv-rv-southern-rakhine' },
+  { name: 'Taungyo', versionId: 4173, abbr: 'TTPV-RV', audioSlug: 'ttpv-rv-taungyo' },
+  { name: 'Thet', versionId: 4156, abbr: 'TTPV-RV', audioSlug: 'ttpv-rv-thet' },
+  { name: 'TaiLaing', versionId: 4174, abbr: 'TTPV-RV', audioSlug: 'ttpv-rv-tailaing' },
 ];
 
 const THAILAND_TRANSLATIONS = [
@@ -95,10 +103,32 @@ export default function TranslationsPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-4">
-            {MYANMAR_TRANSLATIONS.map((lang) => (
-              <div key={lang} className="bg-white rounded-lg p-4 border border-gray-200 flex items-center gap-3">
+            {MYANMAR_TRANSLATIONS.map((t) => (
+              <div key={t.name} className="bg-white rounded-lg p-4 border border-gray-200 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
-                <span className="text-gray-700">{lang}</span>
+                <span className="text-gray-700 flex-1">{t.name}</span>
+                {t.versionId && (
+                  <div className="flex items-center gap-3 text-sm font-semibold shrink-0">
+                    <a
+                      href={`https://www.bible.com/bible/${t.versionId}/LUK.1.${t.abbr}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-600 hover:underline"
+                      aria-label={`Read ${t.name} on YouVersion`}
+                    >
+                      Read
+                    </a>
+                    <a
+                      href={`https://www.bible.com/audio-bible-app-versions/${t.versionId}-${t.audioSlug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-amber-600 hover:underline"
+                      aria-label={`Listen to ${t.name} on YouVersion`}
+                    >
+                      Listen
+                    </a>
+                  </div>
+                )}
               </div>
             ))}
           </div>
