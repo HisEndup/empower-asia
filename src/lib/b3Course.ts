@@ -3,9 +3,9 @@ import { useCallback, useEffect, useState } from 'react';
 export type Lesson = { n: number; id: string; title: string };
 export type Chapter = { title: string; lessons: Lesson[] };
 
-const lesson = (n: number, id: string): Lesson => ({ n, id, title: `Lesson ${n}: Just Obey Yeshua` });
+const lesson = (n: number, id: string): Lesson => ({ n, id, title: `Lesson ${n}: Just Obey Jesus` });
 
-// Recorded sessions from past Just Obey Yeshua trainings (Empower Asia YouTube channel).
+// Recorded sessions from past Just Obey Jesus trainings (Empower Asia YouTube channel).
 export const CHAPTERS: Chapter[] = [
   { title: 'Chapter 1', lessons: [lesson(1, 'je8V5SyooQU'), lesson(2, '9xT7n2_BzNs'), lesson(3, 'JKlATK4y9Ak')] },
   { title: 'Chapter 2', lessons: [lesson(4, 'LkLZlXfIPrM'), lesson(5, 'aFE0YjT4OMQ'), lesson(6, 'fDGDX2gHLlg')] },
@@ -14,9 +14,10 @@ export const CHAPTERS: Chapter[] = [
 ];
 
 export const LESSONS: Lesson[] = CHAPTERS.flatMap((c) => c.lessons);
-export const COURSE_PATH = '/b3-training';
+export const COURSE_PATH = '/just-obey-jesus-training';
 export const lessonPath = (n: number) => `${COURSE_PATH}/lesson/${n}`;
 
+// Key kept from the page's original /b3-training name so existing progress carries over.
 const STORAGE_KEY = 'b3-training-progress';
 const CHANGE_EVENT = 'b3-training-progress-change';
 

@@ -1,9 +1,30 @@
 {
   "redirects": [
-    {"source": "/ten-stories", "destination": "https://www.b3stories.com", "permanent": false},
-    {"source": "/ten-stories/(.*)", "destination": "https://www.b3stories.com", "permanent": false}
+    {
+      "source": "/ten-stories",
+      "destination": "https://www.b3stories.com",
+      "permanent": false
+    },
+    {
+      "source": "/ten-stories/(.*)",
+      "destination": "https://www.b3stories.com",
+      "permanent": false
+    },
+    {
+      "source": "/b3-training",
+      "destination": "/just-obey-jesus-training",
+      "permanent": true
+    },
+    {
+      "source": "/b3-training/(.*)",
+      "destination": "/just-obey-jesus-training/$1",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    {"source": "/(.*)", "destination": "/index.html"}
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }

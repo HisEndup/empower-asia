@@ -7,12 +7,12 @@ const PILLARS = [
   {
     icon: BookOpen,
     title: 'Rooted in Scripture',
-    desc: 'Every session goes back to the Word, learning what Yeshua commanded and how His first disciples lived it out.',
+    desc: 'Every session goes back to the Word, learning what Jesus commanded and how His first disciples lived it out.',
   },
   {
     icon: Users,
     title: 'Obedience-Based Discipleship',
-    desc: 'The goal is not just knowing more, but simply obeying Yeshua in everyday life and helping others do the same.',
+    desc: 'The goal is not just knowing more, but simply obeying Jesus in everyday life and helping others do the same.',
   },
   {
     icon: Repeat,
@@ -31,13 +31,13 @@ export default function B3TrainingPage() {
       {/* Hero */}
       <section className="pt-32 sm:pt-40 pb-12 sm:pb-16 bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">B3 Training · Online Course</p>
+          <p className="text-blue-400 text-xs font-bold uppercase tracking-widest mb-3 sm:mb-4">Online Course</p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
-            Just Obey Yeshua Training
+            Just Obey Jesus Training
           </h1>
           <p className="text-base sm:text-xl text-gray-400 max-w-3xl leading-relaxed mb-8">
             A free, self-paced video course on obedience-based discipleship. Work through {LESSONS.length} lessons recorded
-            from Just Obey Yeshua trainings we have led in years past. Watch, put what you learn into practice, and pass it
+            from Just Obey Jesus trainings we have led in years past. Watch, put what you learn into practice, and pass it
             on to others.
           </p>
 
@@ -145,7 +145,7 @@ export default function B3TrainingPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-center">
           <h2 className="text-2xl sm:text-4xl font-bold text-white mb-4">Want to bring this training to your church?</h2>
           <p className="text-gray-400 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-            We'd love to hear how you are putting these lessons into practice, or help you host a Just Obey Yeshua
+            We'd love to hear how you are putting these lessons into practice, or help you host a Just Obey Jesus
             training for your leaders.
           </p>
           <Link

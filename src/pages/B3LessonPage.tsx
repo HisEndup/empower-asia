@@ -89,8 +89,8 @@ export default function B3LessonPage() {
     if (lesson) {
       applyPageMeta(
         lessonPath(lesson.n),
-        `${lesson.title} | B3 Training`,
-        `Lesson ${lesson.n} of the free Just Obey Yeshua Training video course on obedience-based discipleship.`,
+        `${lesson.title} | Just Obey Jesus Training`,
+        `Lesson ${lesson.n} of the free Just Obey Jesus Training video course on obedience-based discipleship.`,
       );
     }
   }, [lesson]);
@@ -208,7 +208,7 @@ export default function B3LessonPage() {
 
             {finished && (
               <div className="mt-6 rounded-2xl border border-green-600/40 bg-green-600/10 p-5">
-                <p className="text-white font-bold">You've completed the Just Obey Yeshua Training!</p>
+                <p className="text-white font-bold">You've completed the Just Obey Jesus Training!</p>
                 <p className="text-gray-300 text-sm mt-1">
                   Now pass it on.{' '}
                   <Link to="/contact" className="text-blue-400 font-semibold hover:underline">

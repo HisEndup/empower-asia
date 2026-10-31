@@ -49,7 +49,7 @@ const NAV_LINKS: NavItem[] = [
     label: 'Resources',
     children: [
       { label: 'B3 Stories', page: 'b3-stories' },
-      { label: 'B3 Training', page: 'b3-training' },
+      { label: 'Just Obey Jesus Training', page: 'just-obey-jesus-training' },
       { label: 'Movement Video', page: 'movement-video' },
       { label: 'Training Videos & Sermons', page: 'training-videos' },
       { label: 'Case Studies', page: 'case-studies' },
@@ -295,7 +295,7 @@ function Footer() {
               {(
                 [
                   ['Bible Translations', 'translations'],
-                  ['B3 Training', 'b3-training'],
+                  ['Just Obey Jesus Training', 'just-obey-jesus-training'],
                   ['Movement Video', 'movement-video'],
                   ['Training Videos & Sermons', 'training-videos'],
                   ['Case Studies', 'case-studies'],
@@ -436,8 +436,9 @@ export default function App() {
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/b3-prayer-movement" element={<B3PrayerPage />} />
           <Route path="/b3-stories" element={<B3StoriesPage />} />
-          <Route path="/b3-training" element={<B3TrainingPage />} />
-          <Route path="/b3-training/lesson/:n" element={<B3LessonPage />} />
+          <Route path="/just-obey-jesus-training" element={<B3TrainingPage />} />
+          <Route path="/just-obey-jesus-training/lesson/:n" element={<B3LessonPage />} />
+          <Route path="/b3-training/*" element={<Navigate to="/just-obey-jesus-training" replace />} />
           <Route path="/b3-stories/bridges/:slug" element={<BridgePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

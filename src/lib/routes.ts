@@ -21,7 +21,7 @@ export type Page =
   | 'training-videos'
   | 'case-studies'
   | 'b3-stories'
-  | 'b3-training';
+  | 'just-obey-jesus-training';
 
 export const PAGE_PATHS: Record<Page, string> = {
   home: '/',
@@ -41,7 +41,7 @@ export const PAGE_PATHS: Record<Page, string> = {
   'training-videos': '/training-videos',
   'case-studies': '/case-studies',
   'b3-stories': '/b3-stories',
-  'b3-training': '/b3-training',
+  'just-obey-jesus-training': '/just-obey-jesus-training',
 };
 
 // Per-route <title> and meta description. Keep in sync with public/sitemap.xml.
@@ -80,9 +80,9 @@ export const PAGE_META: Record<string, { title: string; description?: string }> 
   },
   '/case-studies': { title: 'Case Studies', description: 'Case studies and research from house church movements among Buddhist peoples.' },
   '/b3-prayer-movement': { title: 'B3 Prayer Movement', description: 'Join the B3 Prayer Movement in praying for the Buddhist world.' },
-  '/b3-training': {
-    title: 'B3 Training: Just Obey Yeshua',
-    description: 'Just Obey Yeshua Training: a free, self-paced video course on obedience-based discipleship and multiplying house churches.',
+  '/just-obey-jesus-training': {
+    title: 'Just Obey Jesus Training',
+    description: 'Just Obey Jesus Training: a free, self-paced video course on obedience-based discipleship and multiplying house churches.',
   },
   '/b3-stories': { title: 'B3 Stories', description: 'Gospel stories and bridges for sharing Christ in Buddhist communities.' },
 };
